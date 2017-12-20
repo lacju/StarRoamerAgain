@@ -1,0 +1,526 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using DarkTonic.CoreGameKit;
+using Rewired;
+
+
+public class PlayerObjectController : MonoBehaviour
+{
+
+    //Global
+    private Vector3 playerShipVelocity;
+
+    void SetPlayerShipVelocity()
+    {
+        playerShipVelocity = rb.velocity;
+    }
+    public Vector3 GetPlayerShipVelocity()
+    {
+        return playerShipVelocity;
+    }
+
+    //Shields
+    private Shield Shields;
+    private float maxShields = .01f;
+    private float currentShieldPoints = 0.01f;
+    public GameObject energyShieldEffect;
+
+    public void DisableShieldEffect()
+    {
+        energyShieldEffect.SetActive(false);
+    }
+    public void EnableShieldEffect()
+    {
+        energyShieldEffect.SetActive(true);
+    }
+    public float GetCurrentShieldPoints()
+    {
+        return currentShieldPoints;
+    }
+    public void SetCurrentShieldPoints(float sp)
+    {
+        currentShieldPoints = sp;
+    }
+    public void ReduceCurrentShieldBy(float rsp)
+    {
+        currentShieldPoints -= rsp;
+    }
+    public void SetMaxShields(float ms)
+    {
+        maxShields = ms;
+    }
+    public float GetMaxShields()
+    {
+        return maxShields;
+    }
+    public void AddToCurrentShields(float atcs)
+    {
+        currentShieldPoints += atcs;
+    }
+
+    //Armor
+    private Armor armor;
+    private float maxArmorPoints;
+    private float currentArmorPoints;
+
+    public float GetMaxArmorPoints()
+    {
+        return maxArmorPoints;
+    }
+    public void SetMaxArmorPoints(float map)
+    {
+        maxArmorPoints = map;
+    }
+    public float GetCurrentArmorPoints()
+    {
+        return currentArmorPoints;
+    }
+    public void SetCurrentArmorPoints(float cap)
+    {
+        currentArmorPoints = cap;
+    }
+
+    //Hull
+    private Hull hull;
+    private float maxHullPoints;
+    private float currentHullPoints;
+
+    public float GetMaxHullPoints()
+    {
+        return maxHullPoints;
+    }
+    public void SetMaxHullPoints(float mhp)
+    {
+        maxHullPoints = mhp;
+    }
+    public float GetCurrentHullPoints()
+    {
+        return currentHullPoints;
+    }
+    public void SetCurrentHull(float ch)
+    {
+        currentHullPoints = ch;
+    }
+
+    //Reactor
+    private Reactor reactor;
+    private float availEnergy;
+    private float maxEnergy;
+    private float energyRechargeRate;
+
+    public float GetAvailEnergy()
+    {
+        return availEnergy;
+    }
+    public float GetMaxEnergy()
+    {
+        return maxEnergy;
+    }
+    public void SetMaxEnergy(float me)
+    {
+        maxEnergy = me;
+    }
+    public void SetAvailEnergy(float ae)
+
+    {
+        availEnergy = ae;
+    }
+    public void SetRechargeRate(float rr)
+
+    {
+        energyRechargeRate = rr;
+    }
+    public void AddToCurrentEnergy(float atce)
+    {
+        availEnergy += atce;
+    }
+
+    //Engine
+    private Engine engine;
+    private float maxSpeed;
+    private float turnSpeed;
+    private float boostSpeed;
+    private float boostEnergyCost;
+    private float boostCoolDown;
+    private float nextBoost;
+    private bool boostOnCoolDown = false;
+
+    public void SetMaxSpeed(float ms)
+    {
+        maxSpeed = ms;
+    }
+    public void SetTurnSpeed(float ts)
+    {
+        turnSpeed = ts;
+    }
+    public void SetBoostSpeed(float bs)
+    {
+        boostSpeed = bs;
+    }
+    public void SetBoostEnergyCost(float bec)
+    {
+        boostEnergyCost = bec;
+    }
+    public void SetBoostCoolDown(float bcd)
+    {
+        boostCoolDown = bcd;
+    }
+    public float GetMaxSpeed()
+    {
+        return maxSpeed;
+    }
+    public float GetTurnSpeed()
+    {
+        return turnSpeed;
+    }
+    public float GetBoostSpeed()
+    {
+        return boostSpeed;
+    }
+    public float GetBoostEnergyCost()
+    {
+        return boostEnergyCost;
+    }
+    public float GetBoostCoolDown()
+    {
+        return boostCoolDown;
+    }
+
+    //Engine Control Systems
+    private void Movement()
+        {        
+            moveVector.x = rewiredPlayer.GetAxis("Move Horizontal");
+            moveVector.z = rewiredPlayer.GetAxis("Move Vertical");
+
+            if (moveVector.x > 0.015f || moveVector.z > 0.015f)
+            {
+                rb.AddForce(moveVector * maxSpeed * Time.deltaTime);           
+            }
+        }
+    private void Rotate()
+        {
+            if (moveVector.x > 0.015f || moveVector.z > 0.015f)
+            {
+                tr.transform.forward = Vector3.Normalize(moveVector);
+            }
+        
+        }
+    public void BoostController()
+        {
+            if (rewiredPlayer.GetAxis("TurboBoost") > 0)
+            {
+                Debug.Log("boost trigger loop passed");
+                if ((GetBoostEnergyCost() < GetAvailEnergy()) && (!boostOnCoolDown))
+                {
+                    Debug.Log("boost cool down loop passed");
+                    SetAvailEnergy(GetAvailEnergy() - GetBoostEnergyCost());
+                    rb.AddForce(moveVector.normalized * GetBoostSpeed() * Time.deltaTime, ForceMode.Impulse);
+                    Invoke("BoostCoolDownReset", (GetBoostCoolDown() + .5f));
+                    boostOnCoolDown = true;
+                }
+            }
+        }
+    private void BoostCoolDownReset()
+        {
+            boostOnCoolDown = false;
+        }
+
+    //radar
+    private Radar radar;
+
+    //Weapon Slot Tracker
+    private float weaponSlotTracker = 3;
+
+    //public void UpdateWeaponSlotUsage(float trsu)
+    //{
+    //    weaponSlotTracker = trsu;
+    //}
+    public float WeaponSlotUsage()
+    {
+        return weaponSlotTracker;
+    }
+
+    //Weapon
+    private Weapon weapon;
+    private float minDamageW;
+    private float maxDamageW;
+    private float refireRate;
+    private float energyCostShot;
+    private float damageType;
+    private float projectileLife;
+    private float projectileForce;
+    private float refireTimer;
+    private float nextFire = 0;
+    public GameObject projectileSlot1;
+    public GameObject projectileSpawn1;
+    private GameObject obj;
+    private List<GameObject> slotOneProjectilePool;
+    private int poolOneCapactiy = 50;
+
+    public void SetProjectileLife(float pl)
+    {
+        projectileLife = pl;
+    }
+    public void SetProjectileForce(float pf)
+    {
+        projectileForce = pf;
+    }
+    public void SetWeaponMinDamage(float wd)
+    {
+        minDamageW = wd;
+    }
+    public void SetWeaponMaxDamage(float wd)
+    {
+        maxDamageW = wd;
+    }
+    public void SetRefireRate(float rr)
+    {
+        refireRate = rr;
+    }
+    public void SetEnergyCostShot(float ecs)
+    {
+        energyCostShot = ecs;
+    }
+    public void SetDamageType(float dt)
+    {
+        damageType = dt;
+    }
+    public GameObject GetSlotOneProjectile()
+    {
+        return projectileSlot1;
+    }
+    public GameObject GetProjectileSpawnPoint()
+    {
+        return projectileSpawn1;
+    }
+    public float GetProjectileLife()
+    {
+        return projectileLife;
+    }
+    public float GetProjectileForce()
+    {
+        return projectileForce;
+    }
+    public float GetWeaponMinDamage()
+    {
+        return minDamageW;
+    }
+    public float GetWeaponMaxDamage()
+    {
+        return maxDamageW;
+    }
+    public float GetRefireRate()
+    {
+        return refireRate;
+    }
+    public float GetEnergyCostShot()
+    {
+        return energyCostShot;
+    }
+    public float GetDamageType()
+    {
+        return damageType;
+    }
+
+    //Weapon2
+    private Weapon weapon2;
+    private float minDamageW2;
+    private float maxDamageW2;
+    private float refireRate2;
+    private float energyCostShot2;
+    private float damageType2;
+    private float projectileLife2;
+    private float projectileForce2;
+    public GameObject projectileSlot2;
+
+    public void SetProjectileLife2(float pl2)
+    {
+        projectileForce = pl2;
+    }
+    public void SetProjectileForce2(float pf2)
+    {
+        projectileForce = pf2;
+    }
+    public void SetWeapon2MinDamage(float wd2)
+    {
+        minDamageW2 = wd2;
+    }
+    public void SetWeapon2MaxDamage(float wd)
+    {
+        maxDamageW2 = wd;
+    }
+    public void SetRefireRate2(float rr2)
+    {
+        refireRate2 = rr2;
+    }
+    public void SetEnergyCostShot2(float ecs2)
+    {
+        energyCostShot2 = ecs2;
+    }
+    public void SetDamageType2(float dt2)
+    {
+        damageType2 = dt2;
+    }
+    public float GetProjectileForce2()
+    {
+        return projectileForce2;
+    }
+    public float GetWeapon2MinDamage()
+    {
+        return minDamageW2;
+    }
+    public float GetWeapon2MaxDamage()
+    {
+        return maxDamageW2;
+    }
+    public float GetRefireRate2()
+    {
+        return refireRate2;
+    }
+    public float GetEnergyCostShot2()
+    {
+        return energyCostShot2;
+    }
+    public float GetDamageType2()
+    {
+        return damageType2;
+    }
+
+    //Weapon3
+    private Weapon weapon3;
+    private float minDamageW3;
+    private float maxDamageW3;
+    private float refireRate3;
+    private float energyCostShot3;
+    private float damageType3;
+    private float projectileLife3;
+    private float projectileForce3;
+    public GameObject projectileSlot3;
+
+    public void SetProjectileLife3(float pl3)
+    {
+        projectileForce = pl3;
+    }
+    public float GetProjectileForce3()
+    {
+        return projectileForce3;
+    }
+    public void SetProjectileForce3(float pf3)
+    {
+        projectileForce = pf3;
+    }
+    public void SetWeapon3MinDamage(float wd3)
+    {
+        minDamageW3 = wd3;
+    }
+    public void SetWeapon3MaxDamage(float wmad3)
+    {
+        minDamageW3 = wmad3;
+    }
+
+    //Weapon Systems
+    public void Fire()
+        {
+       
+
+            if (rewiredPlayer.GetAxis("Fire") > 0)
+            {
+                Debug.Log("refire loop passed");
+                if ((nextFire >= GetRefireRate()) && GetEnergyCostShot() < GetAvailEnergy())
+                { 
+                    GameObject obj = (GameObject)Instantiate(projectileSlot1);
+                    obj.SendMessage("ProjectileSpawned");
+                    SetAvailEnergy(GetAvailEnergy() - GetEnergyCostShot());
+                    nextFire = 0;
+                    Debug.Log("Projectile created . Life: " + projectileLife + "mindmg: " + minDamageW + "maxdmg: " + maxDamageW + "speed(force): " + projectileForce + " refirerate: " + GetRefireRate());
+                }
+              //  break;
+            }
+        
+        }
+
+    //Repair Bots
+    private RepairBots repairBots;
+
+    //Rewired
+    public int rewiredPlayerId = 0;
+    private Player rewiredPlayer;
+    private Vector3 moveVector;
+    private float rotate;
+    private Vector3 rightTrigger;
+    private Vector3 LeftTrigger;
+
+
+    public GenerateDebrisOnDestroy modelToDestroy;
+    private Rigidbody rb;
+    private Transform tr;
+    private Vector3 shipSpeed;
+
+    private void Awake()
+    {
+        rewiredPlayer = ReInput.players.GetPlayer(rewiredPlayerId);
+        tr = GetComponent<Transform>();
+        rb = GetComponent<Rigidbody>();
+
+    }
+
+    void Update()
+    {
+        Movement();
+        Rotate();
+        Fire();
+        SetPlayerShipVelocity();
+        BoostController();
+
+        nextFire += Time.deltaTime;
+        nextBoost += Time.deltaTime;
+    }
+
+    public void TakeDamage(float damage)
+    {
+
+        if (GetCurrentShieldPoints() > 0)
+        {
+            if (GetCurrentShieldPoints() < damage)
+            {
+                DamageHull(damage - GetCurrentShieldPoints());
+                SetCurrentShieldPoints(-1);
+            }
+            SetCurrentShieldPoints(GetCurrentShieldPoints() - damage);
+        }
+        else if (GetCurrentHullPoints() > 0)
+        {
+            DamageHull(damage);
+        }
+        else
+        {
+            DestroyShip();
+        }
+
+    }
+
+    private void DamageHull(float hullDmg)
+    {
+        SetCurrentHull(GetCurrentHullPoints() - hullDmg);
+        //method will eventually handle subsystem damage
+    }
+
+    // called to destroy ship and generate explosion graphic
+    void DestroyShip()
+    {
+
+        modelToDestroy.DestroyStarship();
+        Destroy(gameObject);
+    }
+
+    public class Debug
+    {
+        public static void Log(object obj)
+        {
+            UnityEngine.Debug.Log(System.DateTime.Now.ToLongTimeString() + " : " + obj);
+
+        }
+    } // time stamps debug    
+}

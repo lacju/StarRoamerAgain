@@ -1,0 +1,64 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+
+public class Armor : Item
+{
+    public enum DamageType
+    {
+        energy, plasma, kinetic, blast
+    }
+
+    
+    [Tooltip("The larger the number the lower the damage reduction (Range: 0.1-1)")]
+    public float armorLevel;
+    [Tooltip("Damage resitance")]
+    public DamageType damageResistance;
+    [Tooltip("Damage resistence modifier. Larger numbers mean lower damage reduction (Range: 0.1-1)")]
+    public float resistanceModifier;
+    [Tooltip("Weakness to damage type")]
+    public DamageType damageWeakness;
+    [Tooltip("Damage weakness modifier. Smaller number means more damage from selected type (Range: 0.1-1)")]
+    public float weaknessModifier;
+
+
+    private PlayerObjectController _POC;
+    private float newArmorPoints; //level assigned and held when unequipping the armor in case its damaged
+
+    public void InitializeEquipment( float armorlevel, DamageType damageresistance, float resistancemodifier, DamageType damageweakness, float weaknessmodifier, Sprite iconImg, string itemtype, string itemname, int ID, bool isequipment, string itemdescription, float basecostcredits)
+    {
+        
+        armorLevel = armorlevel;
+        damageResistance = damageresistance;
+        resistanceModifier = resistancemodifier;
+        damageWeakness = damageweakness;
+        weaknessModifier = weaknessmodifier;
+        sprite = iconImg;
+        itemType = itemtype;
+        itemName = itemname;
+        itemID = ID;
+        isEquipment = isequipment;
+        itemDescription = itemdescription;
+        baseCostCredits = basecostcredits;
+    }
+
+
+    public void EquipEquipment()
+    {
+        _POC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerObjectController>();
+
+        isEquipped = true;
+    }
+
+    public void UnequipEquipment()
+    {
+        _POC.SetMaxArmorPoints(1);
+        _POC.SetCurrentArmorPoints(0);
+        newArmorPoints = _POC.GetCurrentArmorPoints();
+        isEquipped = false;
+
+    }
+}
+

@@ -1,0 +1,105 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Reactor : Item {
+
+    [Tooltip("Maximum power")]
+    public float maxPower;
+    [Tooltip("Recharge Rate (per 2 seconds)")]
+    public float rechargeRate;
+
+    private PlayerObjectController _POC;
+    private bool regenOnCoolDown = false;
+
+    public void InitializeEquipment(float maxpower, float rechargerate, Sprite iconImg, string itemtype, string itemname, int ID, bool isequipment, string itemdescription, float basecostcredits)
+    {
+        maxPower = maxpower;
+        rechargeRate = rechargerate;
+        sprite = iconImg;
+        itemType = itemtype;
+        itemName = itemname;
+        itemID = ID;
+        isEquipment = isequipment;
+        itemDescription = itemdescription;
+        baseCostCredits = basecostcredits;
+    }
+
+
+    public void UnequipEquipment()
+    {
+        _POC.SetMaxEnergy(.5f);
+        _POC.SetAvailEnergy(0);
+        isEquipped = false;
+
+    }
+
+    public void EquipEquipment()
+    {
+        _POC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerObjectController>();
+        _POC.SetMaxEnergy(maxPower);
+        _POC.SetAvailEnergy(0);
+        isEquipped = true;
+    }
+
+    private void Update()
+    {
+        if (isEquipped && !regenOnCoolDown) 
+        {
+            Regenerate();
+        }
+    }
+
+    IEnumerator Regenerate()
+    {
+        
+            if (_POC.GetAvailEnergy() < _POC.GetMaxEnergy())
+            {
+                if (_POC.GetAvailEnergy() < 0)
+                {
+                    _POC.SetAvailEnergy(0);
+                }
+                if (_POC.GetAvailEnergy() < _POC.GetMaxEnergy())
+                {
+                    if ((_POC.GetMaxEnergy() - _POC.GetAvailEnergy()) < RechargeRate())
+                    {
+                        _POC.SetAvailEnergy(_POC.GetMaxEnergy());
+                    }
+                    else
+                    {
+                       // regenOnCoolDown = true;
+                    _POC.AddToCurrentEnergy(RechargeRate());
+                    //  Invoke("AddEnergy", 2);
+
+                    yield return new WaitForSeconds(2);
+                     
+
+
+                    }
+                }
+            }
+        
+    }
+
+    public float RechargeRate()
+    {
+        return rechargeRate;
+    }
+
+    //private void AddEnergy()
+    //{
+    //    _POC.AddToCurrentEnergy(RechargeRate());
+    //    regenOnCoolDown = false;
+    //}
+
+    public class Debug
+    {
+        public static void Log(object obj)
+        {
+            UnityEngine.Debug.Log(System.DateTime.Now.ToLongTimeString() + " : " + obj);
+
+        }
+    } // time stamps debug
+
+}

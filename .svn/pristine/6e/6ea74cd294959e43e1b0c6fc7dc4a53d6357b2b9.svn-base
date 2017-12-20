@@ -1,0 +1,80 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Shield1 : MonoBehaviour {
+
+    public float maxCapacity;
+    public float rechargeRate;
+    public float rechargeDelay;
+    public Collider shield;
+
+    private float currentShieldLevel;
+    private float shieldPerctenage;
+    private float health = 100;
+    private bool destroyed;
+    private float rechargeTracker = 0;
+
+    void Update()
+    {
+        shieldPerctenage = (currentShieldLevel / maxCapacity);
+
+        rechargeTracker += Time.deltaTime;
+
+        if (currentShieldLevel <= 0)
+        {
+            shield.enabled = false;
+            
+            currentShieldLevel = 1;
+        }
+        else if (currentShieldLevel > 1)
+        {
+            shield.enabled = true;
+        }
+    }
+
+    void Start()
+    {
+        currentShieldLevel = maxCapacity;
+        InvokeRepeating("Regenerate", 1, 1);
+        shieldPerctenage = (currentShieldLevel / maxCapacity);
+    }
+
+    void TakeDamage(float dmg)
+    {
+        currentShieldLevel = currentShieldLevel - dmg;
+    }
+
+    void Regenerate()
+    {
+        if (currentShieldLevel < maxCapacity)
+        {
+            if ((maxCapacity - currentShieldLevel) < rechargeRate)
+            {
+                currentShieldLevel = maxCapacity;
+            }
+            if (rechargeTracker > rechargeRate)
+            {
+                currentShieldLevel = rechargeRate + currentShieldLevel;
+            }
+            
+        }
+    }
+
+
+    public void ReduceHealth(float dmg)
+    {
+        health = health - dmg;
+    }
+
+    public float ShieldPercent()
+    {
+        return shieldPerctenage;
+    }
+
+    public float HealthPercent()
+    {
+        return (health / 100);
+    }
+}

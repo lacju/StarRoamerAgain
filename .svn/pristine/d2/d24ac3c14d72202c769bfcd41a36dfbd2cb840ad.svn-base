@@ -1,0 +1,90 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public enum ShipType
+{
+    Freighter, Frigate, Cruiser
+}
+
+public class Hull : ScriptableObject {
+    [Header("HULLPOINTS")]
+    [Header("Tier One Freighter = 350, Tier Two Freighter = 1000")]
+    [Header("Tier One Frigate = 500HP, Tier Two Fridage = 1300")]
+    [Header("Tier One Cruiser = 2500, Tier Two Cruiser = 3500")]
+
+    public ShipType shipType;
+    public float hitPointModifier;
+    public bool tierTwo;
+    public string hullModel;
+    public float baseMonetaryValueHull;
+    public bool optionalEquipmentSlot;
+    private PlayerObjectController _POC;
+    public GameObject shipModel;
+    public Image shipIcon;
+    
+
+    public void InitializeHull(ShipType shiptype, string hullmodel, bool tiertwo, float basemonetaryvaluehull, GameObject shipmodel, Image shipicon, bool optionalequipmentslot = false)
+    {
+        shipType = shiptype;
+        tierTwo = tiertwo;
+        hullModel = hullmodel;
+        baseMonetaryValueHull = basemonetaryvaluehull;
+        optionalEquipmentSlot = optionalequipmentslot;
+        shipModel = shipmodel;
+        shipIcon = shipicon;
+    }
+
+    private float maxHullPoints;
+
+    private void Awake()
+    {
+        _POC = FindObjectOfType<PlayerObjectController>();
+
+        switch (shipType)
+        {
+            case ShipType.Freighter:
+                if (tierTwo)
+                {
+                    maxHullPoints = 1000;
+                }
+                else
+                {
+                    maxHullPoints = 350;
+                }
+                break;
+            case ShipType.Frigate:
+                if (tierTwo)
+                {
+                    maxHullPoints = 1300;
+                }
+                else
+                {
+                    maxHullPoints = 500;
+                }
+                break;
+            case ShipType.Cruiser:
+                if (tierTwo)
+                {
+                    maxHullPoints = 2500;
+                }
+                else
+                {
+                    maxHullPoints = 3500;
+                }
+                break;
+        }
+    }
+
+    void Start()
+    {
+
+       
+        
+
+    }
+
+    
+
+}

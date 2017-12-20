@@ -1,0 +1,216 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GameManager : MonoBehaviour
+{
+
+    //Properties
+    private static GameManager instance;
+    private string currentScene; //current scene
+    private Vector3 locationInScene; //current location within current scene
+    private string playerName; //player name
+    private float credits; //available credits
+    private float level; //current player level
+    private float levelUpTracker; //used to track a level up
+    private float experiencePoints; //current experience points
+    private float experienceNextLevel; //XP to next level
+    private float pilotingSkill; //player piloting skill (gives bonus to dodge chance/agility/speed)
+    private float charismaSkill; //player charisma skill (better prices when buying/selling talk your way out of things)
+    private float tacticalSkill; //player tactical skill level (increased damage and subsystem damage control)
+    private float engineeringSkill; //player engineering skill level (increases shield and energy systems)
+    private float mechanicSkill; //player mechanic skill (increase hull HP and repairbot efficiency)
+    private float availableSkillPoints; //available SP
+    private GameObject playerShip; //the player's ship (and it's equipment)
+    private List<Hull> hullListTierOne; //Contains preassambled tier one hull/ship objects populated at run time and pulled from this list during play;
+    private List<Hull> hullListTierTwo; //Contains preassambled tier two hull/ship objects populated at run time and pulled from this list during play;
+
+    //Global Item ID tracker
+    private static int nextAvailItemId = 0;
+
+    public static int  GetNewItemId()
+    {
+        int freeItemId = nextAvailItemId;
+        nextAvailItemId++;
+        return freeItemId;
+    }
+
+
+    public static GameManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new GameObject("GameManager").AddComponent<GameManager>();
+            }
+
+            return instance;
+        }
+    }
+
+    public Hull GetHullOfType(string hulltype, bool tierTwo)
+    {
+        if (tierTwo)
+        {
+            foreach (Hull hull in hullListTierTwo)
+            {
+                if (hull.hullModel == hulltype)
+                {
+                    return hull;
+                }
+
+            }
+        }
+            foreach (Hull hull in hullListTierOne)
+            {
+                if (hull.hullModel == hulltype)
+                {
+                    return hull;
+                }
+
+            }
+        return null;
+    }         
+    public Hull GetRandomHull(bool tierTwo)
+    {
+        int shipToReturn;
+        if (tierTwo)
+        {
+            shipToReturn = Random.Range(0, hullListTierTwo.Count);
+            return hullListTierTwo[shipToReturn];
+        }
+        shipToReturn = Random.Range(0, hullListTierOne.Count);
+        return hullListTierOne[shipToReturn];
+    }
+
+    private void Start()
+    {
+        levelUpTracker = 1;
+        experiencePoints = 1001;
+    }
+
+    private void Update()
+    {
+        level = experiencePoints / (level * 1000);
+
+        if (levelUpTracker != level)
+        {
+            availableSkillPoints += 4;
+            levelUpTracker++; 
+        }
+    }
+
+    // Sets the instance to null when the application quits
+    public void OnApplicationQuit()
+    {
+        instance = null;
+    }
+
+    public void SetScene(string scene)
+    {
+        currentScene = scene;
+    }
+
+    public string GetScene()
+    {
+        return currentScene;
+    }
+
+    public void SetLocationInScene(Vector3 location)
+    {
+        locationInScene = location; 
+    }
+
+    public Vector3 GetLoctionInScene()
+    {
+        return locationInScene;
+    }
+
+    public void SetName(string pName)
+    {
+        playerName = pName;
+    }
+
+    public string GetName()
+    {
+        return playerName;
+    }
+
+    public float GetCredits()
+    {
+        return credits;
+    }
+
+    public void SetCredits(float totalCredits)
+    {
+        credits = totalCredits;
+    }
+
+    public void AddCredits(float creditsToAdd)
+    {
+        credits += creditsToAdd;
+    }
+
+    public float GetExperience()
+    {
+        return experiencePoints;
+    }
+
+    public void AddExperiencePoints(float xpAdd)
+    {
+        experiencePoints += xpAdd;
+    }
+
+    public void SetPilotSkill(float pilot)
+    {
+        pilotingSkill = pilot;
+    }
+
+    public float GetPilotSkill()
+    {
+        return pilotingSkill;
+    }
+
+    public void SetCharismaSkill(float charisma)
+    {
+        charismaSkill = charisma;
+    }
+
+    public float GetCharismaSkill()
+    {
+        return charismaSkill;
+    }
+
+    public void SetTacticalSkill(float tactical)
+    {
+        tacticalSkill = tactical;
+    }
+
+    public float GetTaticalSkill()
+    {
+        return tacticalSkill;
+    }
+
+    public void SetEngineeringSkill(float engineer)
+    {
+        engineeringSkill = engineer;
+    }
+
+    public float GetEngineeringSkill()
+    {
+        return engineeringSkill;
+    }
+
+    public void SetMechanicSkill(float mechanic)
+    {
+        mechanicSkill = mechanic;
+    }
+
+    public float GetMechanicSkill()
+    {
+        return mechanicSkill;
+    }
+
+
+}

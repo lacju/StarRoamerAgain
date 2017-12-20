@@ -1,0 +1,91 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Shield : MonoBehaviour {
+
+    public float maxCapacity;
+    public float rechargeRate;
+    public float rechargeDelay;
+
+    private bool isEquipped = false;
+    private PlayerObjectController _POC;
+
+    public void Update()
+    {
+        if (isEquipped)
+        {
+            Regenerate();
+        }
+    }
+
+    public void InitializeShields()
+    {
+        _POC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerObjectController>();
+        _POC.SetMaxShields(MaxCapacity());
+        _POC.SetCurrentShieldPoints(0);
+        isEquipped = true;
+    }
+
+    public void DeactivateShields()
+    {
+        _POC.SetCurrentShieldPoints(0);
+        _POC.SetMaxShields(1);
+        isEquipped = false;
+
+    }
+
+    public void Regenerate() 
+    {
+        if (_POC.GetCurrentShieldPoints() < _POC.GetMaxShields())
+        {
+            if (_POC.GetCurrentShieldPoints() <= 0)
+            {
+                _POC.SetCurrentShieldPoints(0);
+                Invoke("DelayedRegenerate", rechargeDelay);
+            }
+            else if (_POC.GetCurrentShieldPoints() < _POC.GetMaxShields())
+            {
+                if ((maxCapacity - _POC.GetCurrentShieldPoints()) < RechargeRate())
+                {
+                    _POC.SetCurrentShieldPoints(_POC.GetMaxShields());
+                }
+                else
+                {
+                    _POC.AddToCurrentShields(RechargeRate());
+                }
+            }
+        }
+    }
+
+    void DelayedRegenerate() //called by regenerate method when the recharge delay needs be enacted (shields drop to zero or less)
+    {
+        _POC.AddToCurrentShields(RechargeRate());
+        CancelInvoke();
+    }
+
+    public float MaxCapacity()
+    {
+        return maxCapacity;
+    }
+
+    public float RechargeRate()
+    {
+        return rechargeRate;
+    }
+
+    private float RechargeDelay()
+    {
+        return rechargeRate;
+    }
+
+    public class Debug
+    {
+        public static void Log(object obj)
+        {
+            UnityEngine.Debug.Log(System.DateTime.Now.ToLongTimeString() + " : " + obj);
+
+        }
+    } // time stamps debug
+}

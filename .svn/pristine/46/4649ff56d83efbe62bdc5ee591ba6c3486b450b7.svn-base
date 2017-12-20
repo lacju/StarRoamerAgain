@@ -1,0 +1,66 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum Size
+{
+    small, medium, large, station
+}
+
+public class Hull : MonoBehaviour {
+    public Size shipSize;
+    public float hitPointModifier;
+
+
+    private float maxHullPoints;
+    private float hullPercentage;
+
+    void Start()
+    {
+        switch (shipSize)
+        {
+            case Size.small:
+                maxHullPoints = 250;
+                break;
+            case Size.medium:
+                maxHullPoints = 750;
+                break;
+            case Size.large:
+                maxHullPoints = 2000;
+                break;
+            case Size.station:
+                maxHullPoints = 8000;
+                break;
+        }
+
+
+
+    }
+
+    void Update()
+    {
+        hullPercentage = (hitPoints / maxHitPoints);
+
+    }
+
+    public float CurrentHullPoints()
+    {
+        return hitPoints;
+    }
+
+    void TakeDamage(float dmg)
+    {
+        hitPoints = hitPoints - dmg;
+    }
+
+    public float MaxHullPoints()
+    {
+        return maxHitPoints;
+    }
+
+    public float HullPercentage()
+    {
+        return hullPercentage;
+    }
+
+}

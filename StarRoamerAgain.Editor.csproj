@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{25F3ACFC-DAAD-F20B-C10B-38F72F14AEB3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>Editor:5</UnityProjectType>
+    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
+    <UnityVersion>2017.1.0f3</UnityVersion>
+    <RootNamespace></RootNamespace>
+    <LangVersion>4</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_1_0;UNITY_2017_1;UNITY_2017;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU;PLAYMAKER;PLAYMAKER_1_8;PLAYMAKER_1_8_3;PLAYMAKER_1_8_OR_NEWER</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_1_0;UNITY_2017_1;UNITY_2017;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU;PLAYMAKER;PLAYMAKER_1_8;PLAYMAKER_1_8_3;PLAYMAKER_1_8_OR_NEWER</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="Boo.Lang" />
+    <Reference Include="UnityScript.Lang" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\UnityAssemblies\UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TestRunner">
+      <HintPath>Library\UnityAssemblies\UnityEditor.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>Library\UnityAssemblies\UnityEngine.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>Library\UnityAssemblies\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Timeline">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Timeline">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TreeEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.TreeEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Analytics">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.HoloLens">
+      <HintPath>Library\UnityAssemblies\UnityEditor.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HoloLens">
+      <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Purchasing">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.VR">
+      <HintPath>Library\UnityAssemblies\UnityEditor.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Android.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Android.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WSA.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.WSA.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WebGL.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.WebGL.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Facebook.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Facebook.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+      <HintPath>Library\UnityAssemblies\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook.Unity.Settings">
+      <HintPath>Library\FacebookSDK\Facebook.Unity.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpCompress.3.5">
+      <HintPath>Assets\AddOns\Movinarc\PackageUninstaller\Editor\SharpCompress.3.5.dll</HintPath>
+    </Reference>
+    <Reference Include="ConditionalExpression">
+      <HintPath>Assets\AddOns\PlayMaker\ConditionalExpression.dll</HintPath>
+    </Reference>
+    <Reference Include="ConditionalExpressionEditor">
+      <HintPath>Assets\AddOns\PlayMaker\Editor\ConditionalExpressionEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="PlayMakerEditor">
+      <HintPath>Assets\AddOns\PlayMaker\Editor\PlayMakerEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="PlayMakerEditorResources">
+      <HintPath>Assets\AddOns\PlayMaker\Editor\PlayMakerEditorResources.dll</HintPath>
+    </Reference>
+    <Reference Include="ProBuilderCore-Unity5">
+      <HintPath>Assets\AddOns\ProCore\ProBuilder\Classes\ProBuilderCore-Unity5.dll</HintPath>
+    </Reference>
+    <Reference Include="ProBuilderMeshOps-Unity5">
+      <HintPath>Assets\AddOns\ProCore\ProBuilder\Classes\ProBuilderMeshOps-Unity5.dll</HintPath>
+    </Reference>
+    <Reference Include="KDTree">
+      <HintPath>Assets\AddOns\ProCore\ProBuilder\Classes\ClassesLib\KDTree.dll</HintPath>
+    </Reference>
+    <Reference Include="pb_Stl">
+      <HintPath>Assets\AddOns\ProCore\ProBuilder\Classes\ClassesLib\pb_Stl.dll</HintPath>
+    </Reference>
+    <Reference Include="Triangle">
+      <HintPath>Assets\AddOns\ProCore\ProBuilder\Classes\ClassesLib\Triangle.dll</HintPath>
+    </Reference>
+    <Reference Include="ProBuilderEditor-Unity5">
+      <HintPath>Assets\AddOns\ProCore\ProBuilder\Editor\ProBuilderEditor-Unity5.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Editor">
+      <HintPath>Assets\AddOns\Rewired\Internal\Libraries\Editor\Rewired_Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Core">
+      <HintPath>Assets\AddOns\Rewired\Internal\Libraries\Runtime\Rewired_Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Windows_Lib">
+      <HintPath>Assets\AddOns\Rewired\Internal\Libraries\Runtime\Rewired_Windows_Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="ES2">
+      <HintPath>Assets\Plugins\ES2.dll</HintPath>
+    </Reference>
+    <Reference Include="MoodkieSecurity">
+      <HintPath>Assets\Plugins\MoodkieSecurity.dll</HintPath>
+    </Reference>
+    <Reference Include="ES2Editor">
+      <HintPath>Assets\Plugins\Editor\ES2Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="RelationsInspector">
+      <HintPath>Assets\Plugins\Editor\RelationsInspector\RelationsInspector.dll</HintPath>
+    </Reference>
+    <Reference Include="PlayMaker">
+      <HintPath>Assets\Plugins\PlayMaker\PlayMaker.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-UnityScript">
+      <HintPath>Library\ScriptAssemblies\Assembly-UnityScript.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="StarRoamerAgain.csproj">
+      <Project>{341B226C-BD5C-679B-C1AA-2FD1CB412886}</Project>
+      <Name>StarRoamerAgain</Name>
+    </ProjectReference>
+    <ProjectReference Include="StarRoamerAgain.Plugins.csproj">
+      <Project>{ABE824CD-4226-BC67-BD19-B2C8932059D9}</Project>
+      <Name>StarRoamerAgain.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="StarRoamerAgain.Editor.Plugins.csproj">
+      <Project>{7D9EE813-DBD5-D75C-87E5-9DCE0536DE07}</Project>
+      <Name>StarRoamerAgain.Editor.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\AddOns\Earth\Editor\EarthEditor.cs" />
+    <Compile Include="Assets\AddOns\Editor\ExposeProperties.cs" />
+    <Compile Include="Assets\AddOns\iTween\PlayMaker\Editor\iTweenMoveToActionEditor.cs" />
+    <Compile Include="Assets\AddOns\Movinarc\PackageUninstaller\Editor\PUManager.cs" />
+    <Compile Include="Assets\AddOns\Movinarc\PackageUninstaller\Editor\PUSelection.cs" />
+    <Compile Include="Assets\AddOns\Movinarc\PackageUninstaller\Editor\TreeNode.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\BaseClasses\OnAnimatorUpdateActionEditorBase.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\GetAnimatorAnimatorRootActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\GetAnimatorBoneGameObjectActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\GetAnimatorBoolActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\GetAnimatorCurrentStateInfoActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\GetAnimatorCurrentStateInfoIsNameActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\GetAnimatorCurrentStateInfoIsTagActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\GetAnimatorCurrentTransitionInfoActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\GetAnimatorCurrentTransitionInfoIsNameActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\GetAnimatorCurrentTransitionInfoIsUserNameActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\GetAnimatorDeltaActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\GetAnimatorFloatActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\GetAnimatorGravityWeightActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\GetAnimatorIKGoalActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\GetAnimatorIntActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\GetAnimatorIsLayerInTransitionActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\GetAnimatorIsMatchingTargetActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\GetAnimatorLayerWeightActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\GetAnimatorNextStateInfoActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\GetAnimatorPivotActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\GetAnimatorSpeedActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\GetAnimatorTargetActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\SetAnimatorBoolActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\SetAnimatorFloatActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Animator\Editor\SetAnimatorIntActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Editor\CallMethodEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Editor\GetDistanceEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Editor\LookAtActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Editor\MoveTowardsActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Editor\SetCameraFOVActionEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Editor\SetPropertyEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Quaternion\Editor\GetQuaternionEulerAnglesCustomEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Quaternion\Editor\GetQuaternionFromRotationCustomEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Quaternion\Editor\GetQuaternionMultipliedByQuaternionCustomEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Quaternion\Editor\GetQuaternionMultipliedByVectorCustomEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Quaternion\Editor\QuaternionAngleAxisCustomEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Quaternion\Editor\QuaternionCustomEditorBase.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Quaternion\Editor\QuaternionEulerCustomEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Quaternion\Editor\QuaternionInverseCustomEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Quaternion\Editor\QuaternionLerpCustomEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Quaternion\Editor\QuaternionLookRotationCustomEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Quaternion\Editor\QuaternionLowPassFilterCustomEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Quaternion\Editor\QuaternionRotateTowardsCustomEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Actions\Quaternion\Editor\QuaternionSlerpCustomEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\AboutWindow.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\AssetGUIDs.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\ContextToolWindow.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\EditorStartupPrefs.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\FsmActionWindow.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\FsmComponentInspector.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\FsmEditorHelpers.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\FsmEditorWindow.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\FsmErrorWindow.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\FsmEventsWindow.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\FsmGlobalsWindow.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\FsmLogWindow.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\FsmSelectorWindow.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\FsmStateWindow.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\FsmTemplate.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\FsmTemplateEditor.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\FsmTemplateWindow.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\FsmTimelineWindow.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\PlayMakerAutoUpdater.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\PlayMakerBugReportWindow.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\PlayMakerBuildCallbacks.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\PlayMakerCustomActionWizard.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\PlayMakerDefines.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\PlayMakerEditorStartup.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\PlayMakerGlobalsInspector.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\PlayMakerGUIInspector.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\PlayMakerMainMenu.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\PlayMakerProjectTools.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\PlayMakerUpdater.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\PlayMakerUpgradeGuide.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\PlayMakerUpgradeTools.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\PlayMakerWelcomeWindow.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\PreUpdateChecker.cs" />
+    <Compile Include="Assets\AddOns\PlayMaker\Editor\ReportWindow.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\About\Editor\pb_AboutWindow.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\API Examples\Editor\CustomAction.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\API Examples\Editor\EditorCallbackViewer.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\API Examples\Editor\RenameNewObjects.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\API Examples\Editor\SetCustomUnwrapParams.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\Editor\MenuItems\Actions\pb_GenerateUV2.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\Editor\MenuItems\Geometry\pb_DetachDeleteFace.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\Editor\MenuItems\Geometry\pb_ExtrudeElement.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\Editor\MenuItems\Geometry\pb_FlipEdge.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\Editor\MenuItems\Geometry\pb_FlipNormals.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\Editor\MenuItems\Geometry\pb_SetPivot.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\Editor\MenuItems\Repair\pb_CleanLeakedMeshes.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\Editor\MenuItems\Repair\pb_ForceSceneRefresh.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\Editor\MenuItems\Repair\pb_RemoveDegenerateTris.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\Editor\MenuItems\Repair\pb_RepairColors.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\Editor\MenuItems\Repair\pb_RepairMeshReferences.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\Editor\MenuItems\Repair\pb_RepairUV.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\Editor\MenuItems\Repair\pb_ResetEntityMaterials.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\Editor\MenuItems\Selection\pb_EdgeSelection.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\Editor\MenuItems\Selection\pb_ExpandSelection.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\Editor\MenuItems\Selection\pb_InvertSelection.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\Editor\MenuItems\Selection\pb_MaterialSelection.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\Editor\pb_MenuItems.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\Editor\pb_MissingScriptEditor.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\Editor\pb_Preferences.cs" />
+    <Compile Include="Assets\AddOns\ProCore\ProBuilder\Editor\pb_ScenePostProcessor.cs" />
+    <Compile Include="Assets\AddOns\Rewired\Extras\ControlMapper\Scripts\Editor\ControlMapperInspector.cs" />
+    <Compile Include="Assets\AddOns\Rewired\Extras\ControlMapper\Scripts\Editor\CustomButtonInspector.cs" />
+    <Compile Include="Assets\AddOns\Rewired\Extras\ControlMapper\Scripts\Editor\CustomSliderInspector.cs" />
+    <Compile Include="Assets\AddOns\Rewired\Extras\ControlMapper\Scripts\Editor\CustomToggleInspector.cs" />
+    <Compile Include="Assets\AddOns\Rewired\Internal\Scripts\Editor\CustomInspectors\ControllerDataFilesInspector.cs" />
+    <Compile Include="Assets\AddOns\Rewired\Internal\Scripts\Editor\CustomInspectors\CustomInspector_External.cs" />
+    <Compile Include="Assets\AddOns\Rewired\Internal\Scripts\Editor\CustomInspectors\HardwareJoystickMapInspector.cs" />
+    <Compile Include="Assets\AddOns\Rewired\Internal\Scripts\Editor\CustomInspectors\HardwareJoystickTemplateMapInspector.cs" />
+    <Compile Include="Assets\AddOns\Rewired\Internal\Scripts\Editor\CustomInspectors\InputManagerInspector.cs" />
+    <Compile Include="Assets\AddOns\Rewired\Internal\Scripts\Editor\CustomInspectors\UserDataStore_PlayerPrefsInspector.cs" />
+    <Compile Include="Assets\AddOns\Rewired\Internal\Scripts\Editor\UnityEditorBridge.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Scripts\Editor\Enums, Structs and Serializables\AnimationTriggersExtendedDrawer.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Scripts\Editor\Enums, Structs and Serializables\ColorBlockExtendedDrawer.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Scripts\Editor\Enums, Structs and Serializables\SpriteStateExtendedDrawer.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Scripts\Editor\Miscellaneous\BitMaskEditor.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Scripts\Editor\Miscellaneous\ColorPropertyDrawer.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Scripts\Editor\Miscellaneous\UIAnimatorControllerGenerator.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Scripts\Editor\Raycast Filters\UICircularRaycastFilterEditor.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Scripts\Editor\Raycast Filters\UIRectangularRaycastFilterEditor.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Scripts\Editor\Tools\NavigationTools.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Scripts\Editor\UI\Select Field\UISelectField_ArrowEditor.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Scripts\Editor\UI\Select Field\UISelectField_LabelEditor.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Scripts\Editor\UI\Select Field\UISelectField_ListEditor.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Scripts\Editor\UI\Select Field\UISelectFieldEditor.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Scripts\Editor\UI\UIButtonExtended_TargetEditor.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Scripts\Editor\UI\UIButtonExtendedEditor.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Scripts\Editor\UI\UIDragObjectEditor.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Scripts\Editor\UI\UIHighlightTransitionEditor.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Scripts\Editor\UI\UIInputFieldLayoutExtensionEditor.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Scripts\Editor\UI\UISliderExtendedEditor.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Scripts\Editor\UI\UITabEditor.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Scripts\Editor\UI\UIWindowEditor.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Simple Sprite Packer\Scripts\Editor\SPAtlasBuilder.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Simple Sprite Packer\Scripts\Editor\SPDropWindow.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Simple Sprite Packer\Scripts\Editor\SPInstanceEditor.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Simple Sprite Packer\Scripts\Editor\SPReferenceReplacerWindow.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Simple Sprite Packer\Scripts\Editor\SPSettings.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Simple Sprite Packer\Scripts\Editor\SPSpriteImportData.cs" />
+    <Compile Include="Assets\AddOns\SpaceD UGUI\Simple Sprite Packer\Scripts\Editor\SPTools.cs" />
+    <Compile Include="Assets\AddOns\UnionAssetes\Particle\ParticleScaler\Editor\ParticleScaleEditor.cs" />
+    <Compile Include="Assets\Common\Editor\GameManager\GameSettingsController.cs" />
+    <Compile Include="Assets\Common\Editor\GameManager\NewBehaviourScript.cs" />
+    <Compile Include="Assets\Common\Editor\GlobalGameManagerEditor.cs" />
+    <Compile Include="Assets\Common\Editor\Inventory\InventoryEditor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\AddOns\Earth\Materials\EarthShader.shader" />
+    <None Include="Assets\AddOns\Earth\Readme.txt" />
+    <None Include="Assets\AddOns\Easy Save 2\changelog.txt" />
+    <None Include="Assets\AddOns\Easy Save 2\readme.txt" />
+    <None Include="Assets\AddOns\EnergyShields\Resources\EnergyShieldShaderV5_Culling.shader" />
+    <None Include="Assets\AddOns\EnergyShields\Resources\EnergyShieldShaderV5_nonCulling.shader" />
+    <None Include="Assets\AddOns\EnergyShields\Resources\RimShader.shader" />
+    <None Include="Assets\AddOns\Movinarc\PackageUninstaller\README.txt" />
+    <None Include="Assets\AddOns\PlayMaker\Editor\Install\readme.txt" />
+    <None Include="Assets\AddOns\PlayMaker\Readme.txt" />
+    <None Include="Assets\AddOns\PlayMaker\Resources\PlayMakerAssemblies.txt" />
+    <None Include="Assets\AddOns\PlayMaker\Templates\readme.txt" />
+    <None Include="Assets\AddOns\PlayMaker\Versions\readme.txt" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\API Examples\Icosphere FFT\README.txt" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\About\Credits.txt" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\About\changelog.txt" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\About\pc_AboutEntry_ProBuilder.txt" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\DiffuseTextureBlend.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\DiffuseVertexColor.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\UnlitSolidColor.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\pb_FaceHighlight.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\pb_FacePicker.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\pb_HideVertices.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\pb_SelectionPicker.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\pb_StandardVertexColor.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\pb_TransparentOverlay.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\pb_UnlitVertexColor.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\pb_VertexPicker.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\pb_VertexShader.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\readme.txt" />
+    <None Include="Assets\AddOns\Rewired\Documentation\ReadMe.txt" />
+    <None Include="Assets\AddOns\Rewired\Documentation\ReleaseNotes.txt" />
+    <None Include="Assets\AddOns\Rewired\Documentation\licences.txt" />
+    <None Include="Assets\AddOns\Rewired\Internal\Libraries\Runtime\Rewired_Core.XML" />
+    <None Include="Assets\AddOns\SpaceD UGUI\Simple Sprite Packer\Changelog.txt" />
+    <None Include="Assets\AddOns\SpaceD UGUI\Simple Sprite Packer\readme.txt" />
+    <None Include="Assets\AddOns\SpaceD UGUI\changelog.txt" />
+    <None Include="Assets\AddOns\WeaponEffects\Sci-Fi Arsenal\Sci-Fi Arsenal - ReadMe.txt" />
+    <None Include="Assets\AddOns\iTween\ReadMe!\ReadMe!.txt" />
+    <None Include="Assets\AddOns\readme.txt" />
+    <None Include="Assets\Plugins\DarkTonic\CoreGameKit\ReleaseNotes.txt" />
+    <None Include="Assets\link.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
+</Project>

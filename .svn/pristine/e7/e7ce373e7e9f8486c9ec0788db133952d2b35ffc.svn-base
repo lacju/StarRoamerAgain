@@ -1,0 +1,130 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Weapon : MonoBehaviour {
+
+    public float minDamage;
+    public float maxDamage;
+    public float refireRate;
+    public float energyCost;
+    public float projectileLife;
+    public float projectileForce;
+
+    private PlayerObjectController _POC;
+
+    public void EquipWeapon()
+    {
+        _POC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerObjectController>();
+
+        _POC.SetWeaponMinDamage(MinDamage());
+        _POC.SetWeaponMaxDamage(MaxDamage());
+        _POC.SetRefireRate(RefireRate());
+        _POC.SetEnergyCostShot(EnergyCost());
+        _POC.SetProjectileForce(ProjectileForce());
+        _POC.SetProjectileLife(ProjectileLife());
+
+        //switch ((int)_POC.WeaponSlotUsage())
+        //{
+        //    case 3:
+        //        //_POC.UpdateWeaponSlotUsage(1);
+        //        _POC.SetWeaponMinDamage(MinDamage());
+        //        _POC.SetWeaponMaxDamage(MaxDamage());
+        //        _POC.SetRefireRate(RefireRate());
+        //        _POC.SetEnergyCostShot(EnergyCost());
+        //        _POC.SetProjectileForce(ProjectileForce());
+        //        _POC.SetProjectileLife(ProjectileLife());
+        //        break;
+        //    case 1:
+        //      //  _POC.UpdateWeaponSlotUsage(2);
+        //        _POC.SetWeapon2MinDamage(MinDamage());
+        //        _POC.SetWeapon2MaxDamage(MaxDamage());
+        //        _POC.SetRefireRate2(RefireRate());
+        //        _POC.SetEnergyCostShot2(EnergyCost());
+        //        _POC.SetProjectileForce2(ProjectileForce());
+        //        _POC.SetProjectileLife2(ProjectileLife());
+        //        break;
+        //    case 2:
+        //       // _POC.UpdateWeaponSlotUsage(3);
+        //        _POC.SetWeapon3MinDamage(MinDamage());
+        //        _POC.SetWeapon3MaxDamage(MaxDamage());
+        //      //  _POC.SetRefireRate3(RefireRate());
+        //      //  _POC.SetEnergyCostShot3(EnergyCost());
+        //        _POC.SetProjectileForce3(ProjectileForce());
+        //        _POC.SetProjectileLife3(ProjectileLife());
+        //        break;
+   // }
+    }
+
+    public void UnequipWeapon()
+    {
+    //switch ((int)_POC.WeaponSlotUsage())
+    //{
+
+    _POC.SetWeaponMinDamage(0);
+    _POC.SetWeaponMaxDamage(0);
+    _POC.SetRefireRate(3);
+    _POC.SetEnergyCostShot(0);
+    _POC.SetProjectileForce(0);
+    _POC.SetProjectileLife(0);
+            //case 1:
+            //  //  _POC.UpdateWeaponSlotUsage(0);
+            //    _POC.SetWeaponMinDamage(0);
+            //    _POC.SetWeaponMaxDamage(0);
+            //    _POC.SetRefireRate(3);
+            //    _POC.SetEnergyCostShot(0);
+            //    _POC.SetProjectileForce(0);
+            //    _POC.SetProjectileLife(0);
+            //    break;
+            //case 2:
+            // //   _POC.UpdateWeaponSlotUsage(1);
+            //    _POC.SetWeapon2MinDamage(0);
+            //    _POC.SetWeapon2MaxDamage(0);
+            //    _POC.SetRefireRate2(0);
+            //    _POC.SetEnergyCostShot2(0);
+            //    _POC.SetProjectileForce2(0);
+            //    _POC.SetProjectileLife2(0);
+            //    break;
+            //case 3:
+            // //   _POC.UpdateWeaponSlotUsage(2);
+            //    _POC.SetWeapon3MinDamage(0);
+            //    _POC.SetWeapon3MaxDamage(0);
+            ////    _POC.SetRefireRate3(0);
+            // //   _POC.SetEnergyCostShot3(0);
+            //    _POC.SetProjectileForce3(0);
+            //    _POC.SetProjectileLife3(0);
+            //    break;
+       // }
+    }
+
+    public float MinDamage()
+    {
+        return minDamage;
+    }
+
+    public float MaxDamage()
+    {
+        return maxDamage;
+    }
+
+    public float RefireRate()
+    {
+        return refireRate;
+    }
+
+    public float EnergyCost()
+    {
+        return energyCost;
+    }
+
+    public float ProjectileForce()
+    {
+        return projectileForce;
+    }
+
+    public float ProjectileLife()
+    {
+        return projectileLife;
+    }
+
+}

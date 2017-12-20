@@ -1,0 +1,405 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class PlayerObjectController : MonoBehaviour
+{
+    //Shields
+    private Shield Shields;
+    private float maxShields = .01f;
+    private float currentShieldPoints = 0.01f;
+    public Slider shieldBar;
+    public Image shieldsStatus; //shields healthbar
+    public Text shieldLevelRawNumber;
+
+    //Armor
+    private Armor armor;
+    private float maxArmorPoints;
+    private float currentArmorPoints;
+    public Slider armorBar;
+    public Text rawArmorNumber;
+
+    //Hull
+    private Hull hull;
+    private float maxHullPoints;
+    private float currentHullPoints;
+    public Slider hullBar;
+    public Text hullLevelRawNumber;
+
+    //Reactor
+    private Reactor reactor;
+    private float availEnergy;
+    private float maxEnergy;
+    private float energyRechargeRate;
+    public Slider energyBar;
+    public Image reactorStatus; //reactor healthbar
+
+    //Engine
+    private Engine engine;
+    private float maxSpeed;
+    private float turnSpeed;
+    private float boostSpeed;
+    private float boostEnergyCost;
+    private float boostCoolDown;
+    public Image engineStatus; //engine healthbar
+    public Text aBForce;
+    public Text aBCost;
+    public Text maxSpeedText;
+
+    //radar
+    private Radar radar;
+    public Image radarStatus; //radar healthbar
+
+    //Weapon
+    private Weapon weapon;
+    private float damageW;
+    private float refireRate;
+    private float energyCostShot;
+    private float damageType;
+
+    //Weapon2
+    private Weapon weapon2;
+    private float damageW2;
+    private float refireRate2;
+    private float energyCostShot2;
+    private float damageType2;
+    public Image weaponStatus; //weapons healthbar
+
+    //Repair Bots
+    private RepairBots repairBots;
+    public Image repairBotsStatus; //repairbots healthbar
+
+    public GenerateDebrisOnDestroy modelToDestroy;
+    private Rigidbody rb;
+    private Transform tr;
+    private Vector3 shipSpeed;
+
+    void Start()
+    {
+
+        
+    }
+
+    void Update()
+    {
+        UpdateHUDVitals();
+    }
+
+    //Engine 
+    public void SetMaxSpeed(float ms)
+    {
+        maxSpeed = ms;
+    }
+    public void SetTurnSpeed(float ts)
+    {
+        turnSpeed = ts;
+    }
+    public void SetBoostSpeed(float bs)
+    {
+        boostSpeed = bs;
+    }
+    public void SetBoostEnergyCost(float bec)
+    {
+        boostEnergyCost = bec;
+    }
+    public void SetBoostCoolDown(float bcd)
+    {
+        boostCoolDown = bcd;
+    }
+    public float GetMaxSpeed()
+    {
+        return maxSpeed;
+    }
+    public float GetTurnSpeed()
+    {
+        return turnSpeed;
+    }
+    public float GetBoostSpeed()
+    {
+        return boostSpeed;
+    }
+    public float GetBoostEnergyCost()
+    {
+        return boostEnergyCost;
+    }
+    public float GetBoostCoolDown()
+    {
+        return boostCoolDown;
+    }
+
+
+
+    //Shields
+    public float GetCurrentShieldPoints()
+    {
+        return currentShieldPoints;
+    }
+    public void SetCurrentShieldPoints(float sp)
+    {
+        currentShieldPoints = sp;
+    }
+    public void ReduceCurrentShieldBy(float rsp)
+    {
+        currentShieldPoints -= rsp;
+    }
+    public void SetMaxShields(float ms)
+    {
+        maxShields = ms;
+    }
+    public float GetMaxShields()
+    {
+        return maxShields;
+    }
+    public void AddToCurrentShields(float atcs)
+    {
+        currentShieldPoints += atcs;
+    }
+
+    //Armor
+    public float GetMaxArmorPoints()
+    {
+        return maxArmorPoints;
+    }
+    public void SetMaxArmorPoints(float map)
+    {
+        maxArmorPoints = map;
+    }
+    public float GetCurrentArmorPoints()
+    {
+        return currentArmorPoints;
+    }
+    public void SetCurrentArmorPoints(float cap)
+    {
+        currentArmorPoints = cap;
+    }
+
+    //Hull
+    public float GetMaxHullPoints()
+    {
+        return maxHullPoints;
+    }
+    public void SetMaxHullPoints(float mhp)
+    {
+        maxHullPoints = mhp;
+    }
+    public float GetCurrentHullPoints()
+    {
+        return currentHullPoints;
+    }
+    public void SetCurrentHull(float ch)
+    {
+        currentHullPoints = ch;
+    }
+
+    //Reactor
+    public float GetAvailEnergy()
+    {
+        return availEnergy;
+    }
+    public float GetMaxEnergy()
+    {
+        return maxEnergy;
+    }
+    public void SetMaxEnergy(float me)
+    {
+        maxEnergy = me;
+    }
+    public void SetAvailEnergy(float ae)
+
+    {
+        availEnergy = ae;
+    }
+    public void SetRechargeRate(float rr)
+
+    {
+        energyRechargeRate = rr;
+    }
+
+    //Weapon1
+    public void SetWeaponDamage(float wd)
+    {
+        damageW = wd;
+    }
+    public void SetRefireRate(float rr)
+    {
+        refireRate = rr;
+    }
+    public void SetEnergyCostShot(float ecs)
+    {
+        energyCostShot = ecs;
+    }
+    public void SetDamageType(float dt)
+    {
+        damageType = dt;
+    }
+    public float GetWeaponDamage()
+    {
+        return damageW;
+    }
+    public float GetRefireRate()
+    {
+        return refireRate;
+    }
+    public float GetEnergyCostShot()
+    {
+        return energyCostShot;
+    }
+    public float GetDamageType()
+    {
+        return damageType;
+    }
+
+    //Weapon2
+    public void SetWeapon2Damage(float wd)
+    {
+        damageW2 = wd;
+    }
+    public void SetRefireRate2(float rr)
+    {
+        refireRate2 = rr;
+    }
+    public void SetEnergyCostShot2(float ecs)
+    {
+        energyCostShot2 = ecs;
+    }
+    public void SetDamageType2(float dt)
+    {
+        damageType2 = dt;
+    }
+    public float GetWeaponDamage2()
+    {
+        return damageW2;
+    }
+    public float GetRefireRate2()
+    {
+        return refireRate2;
+    }
+    public float GetEnergyCostShot2()
+    {
+        return energyCostShot2;
+    }
+    public float GetDamageType2()
+    {
+        return damageType2;
+    }
+
+
+    void UpdateHUDVitals()
+    { 
+        float hullPercent = GetCurrentHullPoints() / GetMaxHullPoints();
+        float energyPercent = GetAvailEnergy() / GetMaxEnergy();
+
+        //shield values
+        if ((maxShields < 1))
+        {
+            shieldBar.value = 0;
+            shieldLevelRawNumber.text = "0";
+        }
+        else
+        {
+            shieldLevelRawNumber.text = GetCurrentShieldPoints().ToString();
+            shieldBar.value = GetCurrentShieldPoints() / GetMaxShields();
+        }
+        //armor values
+        if ((maxArmorPoints < 1))
+        {
+            armorBar.value = 0;
+            rawArmorNumber.text = "0";
+        }
+        else
+        {
+            rawArmorNumber.text = GetCurrentArmorPoints().ToString(); 
+            armorBar.value = GetCurrentArmorPoints() / GetMaxArmorPoints();
+        }
+
+        //Engine Values
+        aBForce.text = GetBoostSpeed().ToString();
+        aBCost.text = GetBoostEnergyCost().ToString();
+        maxSpeedText.text = GetMaxSpeed().ToString();
+
+    }
+
+    // called to destroy ship and generate explosion graphic
+    void DestroyShip()
+    {
+
+        modelToDestroy.DestroyStarship();
+        Destroy(gameObject);
+    }
+
+    //dmgsubsystems(), updatesubsystemsbars(), fixedupdate()
+
+   //void DamageSubsystem(float dmg)
+    //{
+    //    float hullPercentage = hull.HullPercentage();
+
+    //    if (hullPercentage >= .75)
+    //    {
+    //        float randomSystem = Random.Range(0, 1);
+    //        if (randomSystem > .5)
+    //        {
+    //            weapon.ReduceHealth(dmg);
+    //        }
+    //        else
+    //        {
+    //            radar.ReduceHealth(dmg);
+    //        }
+
+    //    }
+    //    if (hullPercentage >= .50 && hullPercentage <= .75)
+    //    {
+    //        float randomSystem = Random.Range(0, 1);
+
+    //        if (randomSystem > .5)
+    //        {
+    //            engine.ReduceHealth(dmg);
+    //        }
+    //        else
+    //        {
+    //            Shields.ReduceHealth(dmg);
+    //        }
+    //    }
+    //    if (hullPercentage >= .25 && hullPercentage <= .50)
+    //    {
+    //        reactor.ReduceHealth(dmg);
+    //    }
+    //    if (hullPercentage >= .24)
+    //    {
+    //        //repair bots
+    //    }
+
+    //}
+
+
+    //void UpdateSubSystemBars()
+    //{
+    //    hullBar.value = hull.HullPercentage();
+    //    shieldBar.value = Shields.ShieldPercent();
+    //    energyBar.value = reactor.EnergyPercent();
+    //    engineStatus.fillAmount = engine.HealthPercent();
+    //    shieldsStatus.fillAmount = Shields.HealthPercent();
+    //    weaponStatus.fillAmount = weapon.HealthPercent();
+    //    reactorStatus.fillAmount = reactor.HealthPercent();
+    //    radarStatus.fillAmount = radar.HealthPercent();
+    //    //repairBotsStatus.fillAmount = repairBots.HealthPercent(); not implimented yet
+
+    //}
+
+    //void FixedUpdate()
+    //{
+    //    rb = GetComponent<Rigidbody>();
+    //}
+
+    public class Debug
+    {
+        public static void Log(object obj)
+        {
+            UnityEngine.Debug.Log(System.DateTime.Now.ToLongTimeString() + " : " + obj);
+
+        }
+    } // time stamps debug
+
+    
+    
+}

@@ -1,0 +1,209 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class PlayerEquipmentHandler : MonoBehaviour
+{
+
+    private Inventory playerInv;
+
+    public Engine equippedEngine;
+    public Image engineIcon;
+    public bool engineEquipped = false;
+    public Shield equippedShield;
+    public Image shieldIcon;
+    public bool shieldEquipped = false;
+    public Armor equippedArmor;
+    public Image armorIcon;
+    public bool armorEquipped = false;
+    public Reactor equippedReactor;
+    public Image reactorIcon;
+    public bool reactorEquipped = false;
+    public Weapon equippedWeapon0;
+    public Image weapon0Icon;
+    public bool weapon0Equipped = false;
+    public Weapon equippedWeapon1;
+    public Image weapon1Icon;
+    public bool weapon1Equipped = false;
+    public int weaponSlotTracker;
+
+    private void Awake()
+    {
+        playerInv = FindObjectOfType<Inventory>();
+    }
+
+    public Engine GetEngine()
+    {
+        return equippedEngine;
+    }
+    public Armor GetArmor()
+    {
+        return equippedArmor;
+    }
+    public Shield GetShield()
+    {
+        return equippedShield;
+    }
+    public Reactor GetReactor()
+    {
+        return equippedReactor;
+    }
+    public Weapon GetWeapon0()
+    {
+        return equippedWeapon0;
+    }
+    public Weapon GetWeapon1()
+    {
+        return equippedWeapon1;
+    }
+
+
+    public void EquipItem(Item equipment)
+    {
+        if (!equipment.isEquipped)
+        {
+            equipment.isEquipped = true;
+            string equipType = equipment.itemType;
+
+            switch (equipType)
+            {
+                case "Engine":
+                    equippedEngine = (Engine)equipment;
+                    Debug.Log("Engine set in PEQH");
+                    equippedEngine.EquipEquipment();
+                    Debug.Log("Engine equipped");
+                    engineIcon.sprite = equippedEngine.sprite;
+                    Debug.Log("sprite set and enabled");
+                    engineIcon.enabled = true;
+                    engineEquipped = true;
+                    GameObject.Find("EngineSlotButton").GetComponent<TooltipHandlerEquipment>().enabled = true;
+                    GameObject.Find("EngineSlotButton").GetComponent<Tooltip>().enabled = true;
+                    break;
+                case "Armor":
+                    equippedArmor = (Armor)equipment;
+                    equippedArmor.EquipEquipment();
+                    armorIcon.sprite = equippedArmor.sprite;
+                    armorIcon.enabled = true;
+                    armorEquipped = true;
+                    GameObject.Find("ArmorSlotButton").GetComponent<TooltipHandlerEquipment>().enabled = true;
+                    GameObject.Find("ArmorSlotButton").GetComponent<Tooltip>().enabled = true;
+                    break;
+                case "Shield":
+                    equippedShield = (Shield)equipment;
+                    equippedShield.EquipEquipment();
+                    shieldIcon.sprite = equippedShield.sprite;
+                    shieldIcon.enabled = true;
+                    shieldEquipped = true;
+                    GameObject.Find("ShieldSlotButton").GetComponent<TooltipHandlerEquipment>().enabled = true;
+                    GameObject.Find("ShieldSlotButton").GetComponent<Tooltip>().enabled = true;
+                    break;
+                case "Reactor":
+                    Debug.Log(equipment);
+                    equippedReactor = (Reactor)equipment;
+                    Debug.Log(equippedReactor);
+                    equippedReactor.EquipEquipment();
+                    reactorIcon.sprite = equippedReactor.sprite;
+                    reactorIcon.enabled = true;
+                    reactorEquipped = true;
+                    GameObject.Find("ReactorSlotButton").GetComponent<TooltipHandlerEquipment>().enabled = true;
+                    GameObject.Find("ReactorSlotButton").GetComponent<Tooltip>().enabled = true;
+                    break;
+                case "Weapon":
+                    switch (weapon0Equipped)
+                    {
+                        case false:
+                            equippedWeapon0 = (Weapon)equipment;
+                            equippedWeapon0.EquipEquipment();
+                            weapon0Icon.sprite = equippedWeapon0.sprite;
+                            weapon0Icon.enabled = true;
+                            weapon0Equipped = true;
+                            weaponSlotTracker++;
+                            GameObject.Find("WeaponSlot0Button").GetComponent<TooltipHandlerEquipment>().enabled = true;
+                            GameObject.Find("WeaponSlot0Button").GetComponent<Tooltip>().enabled = true;
+                            break;
+                        case true:
+                            equippedWeapon1 = (Weapon)equipment;
+                            equippedWeapon1.EquipEquipment();
+                            weapon1Icon.sprite = equippedWeapon0.sprite;
+                            weapon1Icon.enabled = true;
+                            weapon1Equipped = true;
+                            GameObject.Find("WeaponSlot1Button").GetComponent<TooltipHandlerEquipment>().enabled = true;
+                            GameObject.Find("WeaponSlot1Button").GetComponent<Tooltip>().enabled = true;
+                            break;
+                    }
+                    break;
+            }
+        }
+    }
+
+    public void UnEquipItem(string itemToUnequip)
+    {
+        switch (itemToUnequip)
+        {
+            case "Engine":
+                equippedEngine.Unequip();
+                playerInv.AddItem(equippedEngine);
+                equippedEngine = null;
+                engineIcon.enabled = false;
+                engineEquipped = false;
+                GameObject.Find("EngineSlotButton").GetComponent<TooltipHandlerEquipment>().enabled = false;
+                GameObject.Find("EngineSlotButton").GetComponent<Tooltip>().enabled = false;
+                break;
+            case "Armor":
+                equippedArmor.UnequipEquipment();
+                playerInv.AddItem(equippedArmor);
+                equippedArmor = null;
+                armorIcon.enabled = false;
+                armorEquipped = false;
+                GameObject.Find("ArmorSlotButton").GetComponent<TooltipHandlerEquipment>().enabled = false;
+                GameObject.Find("ArmorSlotButton").GetComponent<Tooltip>().enabled = false;
+                break;
+            case "Shield":
+                equippedShield.UnequipEquipment();
+                playerInv.AddItem(equippedShield);
+                equippedShield = null;
+                shieldIcon.enabled = false;
+                shieldEquipped = false;
+                GameObject.Find("ShieldSlotButton").GetComponent<TooltipHandlerEquipment>().enabled = false;
+                GameObject.Find("ShieldSlotButton").GetComponent<Tooltip>().enabled = false;
+                break;
+            case "Reactor":
+                equippedReactor.UnequipEquipment();
+                playerInv.AddItem(equippedReactor);
+                equippedReactor = null;
+                reactorIcon.enabled = false;
+                reactorEquipped = false;
+                GameObject.Find("ReactorSlotButton").GetComponent<TooltipHandlerEquipment>().enabled = false;
+                GameObject.Find("ReactorSlotButton").GetComponent<Tooltip>().enabled = false;
+                break;
+            case "Weapon":
+                switch (weapon1Equipped)
+                {
+                    case false:
+                        equippedWeapon0.UnequipEquipment();
+                        playerInv.AddItem(equippedWeapon0);
+                        equippedWeapon0 = null;
+                        weapon0Icon.enabled = false;
+                        weapon0Equipped = false;
+                        GameObject.Find("WeaponSlot0Button").GetComponent<TooltipHandlerEquipment>().enabled = false;
+                        GameObject.Find("WeaponSlot0Button").GetComponent<Tooltip>().enabled = false;
+                        break;
+                    case true:
+                        equippedWeapon1.UnequipEquipment();
+                        playerInv.AddItem(equippedWeapon1);
+                        equippedWeapon1 = null;
+                        weapon1Icon.enabled = false;
+                        weaponSlotTracker--;
+                        weapon1Equipped = false;
+                        GameObject.Find("WeaponSlot1Button").GetComponent<TooltipHandlerEquipment>().enabled = false;
+                        GameObject.Find("WeaponSlot1Button").GetComponent<Tooltip>().enabled = false;
+                        break;
+                }
+                break;
+        }
+
+
+    }
+
+}

@@ -1,0 +1,71 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum Size
+{
+    small, medium, large, station
+}
+
+public class Hull : MonoBehaviour {
+    [Tooltip("Small = 250HP, Medium = 750HP, Large = 2000HP, Station = 8000HP")]
+    public Size shipSize;
+    [Tooltip("(+/- number) Add to base hullpoints")]
+    public float hitPointModifier;
+    private PlayerObjectController _POC;
+    private NPCHandler _NPCH;
+
+    private float maxHullPoints;
+
+    private void Awake()
+    {
+        _POC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerObjectController>();
+
+        if (gameObject.GetComponent<NPCHandler>() != null)
+        {
+            _NPCH = gameObject.GetComponent<NPCHandler>();
+        }
+
+        switch (shipSize)
+        {
+            case Size.small:
+                maxHullPoints = 250;
+                break;
+            case Size.medium:
+                maxHullPoints = 750;
+                break;
+            case Size.large:
+                maxHullPoints = 2000;
+                break;
+            case Size.station:
+                maxHullPoints = 8000;
+                break;
+        }
+        Debug.Log(maxHullPoints);
+    }
+
+    void Start()
+    {
+
+        
+
+        if (hitPointModifier != 0)
+        {
+            _POC.SetMaxHullPoints(maxHullPoints + hitPointModifier);
+            _NPCH.SetMaxHullPoints(maxHullPoints + hitPointModifier);
+
+        }
+        else
+        {
+            _POC.SetMaxHullPoints(maxHullPoints);
+            _POC.SetCurrentHull(maxHullPoints);
+
+            _NPCH.SetMaxHullPoints(maxHullPoints);
+        }
+        
+
+    }
+
+    
+
+}

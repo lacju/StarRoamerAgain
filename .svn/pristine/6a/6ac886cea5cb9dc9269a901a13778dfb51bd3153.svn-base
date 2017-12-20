@@ -1,0 +1,48 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Engine : MonoBehaviour
+{
+    [Tooltip("Max speed of the engine")]
+    public float maxSpeed;
+    [Tooltip("How quickly the ship turns (rotates on the Y axis)")]
+    public float turnSpeed;
+    [Tooltip("Afterburner boost level (physics magnitude: 1-1000)")]
+    public float boostSpeed;
+    [Tooltip("Energy cost per boost cycle ")]
+    public float boostEnergyCost;
+    [Tooltip("Time between boost cycles")]
+    public float boostCoolDown;
+
+    private bool isEquipped = false;
+    private PlayerObjectController _POC;
+
+    public void EquipEngine()
+    {
+        _POC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerObjectController>();
+
+        _POC.SetMaxSpeed(maxSpeed);
+        _POC.SetTurnSpeed(turnSpeed);
+        _POC.SetBoostSpeed(boostSpeed);
+        _POC.SetBoostEnergyCost(boostEnergyCost);
+        _POC.SetBoostCoolDown(boostCoolDown);
+
+        isEquipped = true;
+    }
+
+    public void UnequipEngine()
+    {
+        _POC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerObjectController>();
+
+        _POC.SetMaxSpeed(0);
+        _POC.SetTurnSpeed(0);
+        _POC.SetBoostSpeed(0);
+        _POC.SetBoostEnergyCost(0);
+        _POC.SetBoostCoolDown(0);
+
+        isEquipped = false;
+    }
+
+
+}

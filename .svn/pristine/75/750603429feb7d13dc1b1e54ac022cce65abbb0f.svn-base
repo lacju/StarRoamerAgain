@@ -1,0 +1,129 @@
+﻿//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
+//using UnityEngine.UI;
+
+//public class EquipmentWindowHandler : MonoBehaviour {
+
+//    private PlayerEquipmentHandler _PEC; 
+
+//    public Text engineSpeed;
+//    public Text engineBoostSpeed;
+//    public Text engineBoostCost;
+//    public Text reactorMaxenergy;
+//    public Text reactorRegenRate;
+//    public Text armorEffectiveness;
+//    public Text maxShields;
+//    public Text shieldRegen;
+//    public Text weapon0MinDamage;
+//    public Text weapon0MaxDamage;
+//    public Text weapon0EnergyCost;
+//    public Text weapon0Cooldown;
+//    public Text weapon1MinDamage;
+//    public Text weapon1MaxDamage;
+//    public Text weapon1EnergyCost;
+//    public Text weapon1Cooldown;
+//    public Slider hullBar;
+//    public Text hullNumber;
+//    public Slider energyBar;
+//    public Text energyNumber;
+
+
+//    private void Awake()
+//    {
+//        _PEC = FindObjectOfType<PlayerEquipmentHandler>();
+
+//    }
+
+
+//    private void Update()
+//    {
+//        UpdateHUDVitals();
+//    }
+
+//    void UpdateHUDVitals()
+//    {
+
+//        //Engine values
+//        if ((!_PEC.engineEquipped))
+//        {
+//            engineSpeed.text = "0";
+//            engineBoostSpeed.text = "0";
+//            engineBoostCost.text = "0";
+//        }
+//        else
+//        {
+//            engineSpeed.text = _PEC.equippedEngine.maxSpeed.ToString();
+//            engineBoostSpeed.text = _PEC.equippedEngine.boostSpeed.ToString();
+//            engineBoostCost.text = _PEC.equippedEngine.boostEnergyCost.ToString();
+//        }
+
+//        //Reactor values
+//        if ((!_PEC.reactorEquipped))
+//        {
+//            reactorMaxenergy.text = "0";
+//            reactorRegenRate.text = "0";
+//        }
+//        else
+//        {
+//            reactorMaxenergy.text = _PEC.equippedReactor.maxPower.ToString();
+//            reactorRegenRate.text = _PEC.equippedReactor.rechargeRate.ToString();
+//        }
+
+//        //Armor values
+//        if ((!_PEC.armorEquipped))
+//        {
+//            armorEffectiveness.text = "0";
+//        }
+//        else
+//        {
+//            armorEffectiveness.text = (_PEC.equippedArmor.armorLevel * 100).ToString();
+//        }
+
+//        //Shield values
+//        if ((!_PEC.shieldEquipped))
+//        {
+//            maxShields.text = "0";
+//            shieldRegen.text = "0";
+//        }
+//        else
+//        {
+//            maxShields.text = _PEC.equippedShield.maxCapacity.ToString();
+//            shieldRegen.text = _PEC.equippedShield.rechargeRate.ToString();
+//        }
+
+//        //Weapon0 values
+//        if ((!_PEC.weapon0Equipped))
+//        {
+//            weapon0MinDamage.text = "0";
+//            weapon0MaxDamage.text = "0";
+//            weapon0Cooldown.text = "0";
+//            weapon0EnergyCost.text = "0";
+//        }
+//        else
+//        {
+//            weapon0MinDamage.text = _PEC.equippedWeapon0.minDamage.ToString();
+//            weapon0MaxDamage.text = _PEC.equippedWeapon0.maxDamage.ToString(); 
+//            weapon0Cooldown.text = _PEC.equippedWeapon0.refireRate.ToString();
+//            weapon0EnergyCost.text = _PEC.equippedWeapon0.energyCost.ToString();
+//        }
+
+//        //Weapon1 values
+//        if ((!_PEC.weapon1Equipped))
+//        {
+//            weapon1MinDamage.text = "0";
+//            weapon1MaxDamage.text = "0";
+//            weapon1Cooldown.text = "0";
+//            weapon1EnergyCost.text = "0";
+//        }
+//        else
+//        {
+//            weapon1MinDamage.text = _PEC.equippedWeapon0.minDamage.ToString();
+//            weapon1MaxDamage.text = _PEC.equippedWeapon0.maxDamage.ToString();
+//            weapon1Cooldown.text = _PEC.equippedWeapon0.refireRate.ToString();
+//            weapon1EnergyCost.text = _PEC.equippedWeapon0.energyCost.ToString();
+//        }
+
+
+//    }
+//}

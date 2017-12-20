@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ABE824CD-4226-BC67-BD19-B2C8932059D9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>GamePlugins:3</UnityProjectType>
+    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
+    <UnityVersion>2017.1.0f3</UnityVersion>
+    <RootNamespace></RootNamespace>
+    <LangVersion>4</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_1_0;UNITY_2017_1;UNITY_2017;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU;PLAYMAKER;PLAYMAKER_1_8;PLAYMAKER_1_8_3;PLAYMAKER_1_8_OR_NEWER</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_1_0;UNITY_2017_1;UNITY_2017;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU;PLAYMAKER;PLAYMAKER_1_8;PLAYMAKER_1_8_3;PLAYMAKER_1_8_OR_NEWER</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="Boo.Lang" />
+    <Reference Include="UnityScript.Lang" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>Library\UnityAssemblies\UnityEngine.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>Library\UnityAssemblies\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Timeline">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HoloLens">
+      <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook.Unity.Settings">
+      <HintPath>Library\FacebookSDK\Facebook.Unity.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="ConditionalExpression">
+      <HintPath>Assets\AddOns\PlayMaker\ConditionalExpression.dll</HintPath>
+    </Reference>
+    <Reference Include="ProBuilderCore-Unity5">
+      <HintPath>Assets\AddOns\ProCore\ProBuilder\Classes\ProBuilderCore-Unity5.dll</HintPath>
+    </Reference>
+    <Reference Include="ProBuilderMeshOps-Unity5">
+      <HintPath>Assets\AddOns\ProCore\ProBuilder\Classes\ProBuilderMeshOps-Unity5.dll</HintPath>
+    </Reference>
+    <Reference Include="KDTree">
+      <HintPath>Assets\AddOns\ProCore\ProBuilder\Classes\ClassesLib\KDTree.dll</HintPath>
+    </Reference>
+    <Reference Include="pb_Stl">
+      <HintPath>Assets\AddOns\ProCore\ProBuilder\Classes\ClassesLib\pb_Stl.dll</HintPath>
+    </Reference>
+    <Reference Include="Triangle">
+      <HintPath>Assets\AddOns\ProCore\ProBuilder\Classes\ClassesLib\Triangle.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Core">
+      <HintPath>Assets\AddOns\Rewired\Internal\Libraries\Runtime\Rewired_Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Windows_Lib">
+      <HintPath>Assets\AddOns\Rewired\Internal\Libraries\Runtime\Rewired_Windows_Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="ES2">
+      <HintPath>Assets\Plugins\ES2.dll</HintPath>
+    </Reference>
+    <Reference Include="MoodkieSecurity">
+      <HintPath>Assets\Plugins\MoodkieSecurity.dll</HintPath>
+    </Reference>
+    <Reference Include="PlayMaker">
+      <HintPath>Assets\Plugins\PlayMaker\PlayMaker.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\ExampleScenes\Scripts\KillableListenerSubclass.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\ExampleScenes\Scripts\KillableSubclass.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\ExampleScenes\Scripts\KW_Enemy.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\ExampleScenes\Scripts\KW_Fighter1.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\ExampleScenes\Scripts\KW_Fighter2.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\ExampleScenes\Scripts\KW_Instructions.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\ExampleScenes\Scripts\KW_Instructions2.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\ExampleScenes\Scripts\KW_Instructions3.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\ExampleScenes\Scripts\KW_Instructions4.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\ExampleScenes\Scripts\KW_Instructions5.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\ExampleScenes\Scripts\KW_Instructions6.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\ExampleScenes\Scripts\KW_MenuInstructions.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\ExampleScenes\Scripts\KW_MotherShip.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\ExampleScenes\Scripts\KW_Player.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\ExampleScenes\Scripts\KW_Projectile.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\ExampleScenes\Scripts\KW_Shot3.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\ExampleScenes\Scripts\KW_UFO.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\ExampleScenes\Scripts\KW_UFOProjectile.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitFireCustomEvent.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitGotoWave.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitKillableAttackOrHitPointsAdd.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitKillableAttackOrHitPointsMod.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitKillableDespawn.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitKillableDestroy.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitKillableGetCurrentHitPoints.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitKillableTakeDamage.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitKillableTemporaryInvincibility.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitPoolBossDespawn.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitPoolBossDespawnAllPrefabs.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitPoolBossDespawnPrefabsOfType.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitPoolBossItemDespawnedCount.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitPoolBossItemIsInPool.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitPoolBossItemSpawnedCount.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitPoolBossItemTotalCount.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitPoolBossKillAllPrefabs.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitPoolBossKillPrefabsOfType.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitPoolBossPrefabCount.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitPoolBossSpawn.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitSyncroSpawnerSpawnOne.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitTriggeredSpawnerEndWave.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitTriggeredSpawnerHasWaveType.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitVariableFloatAdd.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitVariableFloatGetValue.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitVariableFloatMultiply.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitVariableFloatSet.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitVariableIntAdd.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitVariableIntGetValue.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitVariableIntMultiply.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitVariableIntSet.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitWaveEnd.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitWavePause.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitWaveRestart.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\PlaymakerCustomActions\CoreGameKitWaveUnpause.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Combat\ClickToKillOrDamage.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Combat\ClickToKillOrDamage2D.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Combat\Killable.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Combat\KillableChildCollision.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Combat\KillableChildVisibility.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Combat\KillableListener.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Despawners\ParticleDespawner.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Despawners\TimedDespawner.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Despawners\TimedDespawnerListener.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Despawners\TimedDespawnerPlaymakerListener.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Despawners\TriggeredDespawner.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Despawners\TriggeredDespawnerListener.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Despawners\TriggeredDespawnerPlaymakerListener.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Level\LevelSettings.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Level\LevelSettingsListener.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Level\LevelSettingsPlaymakerListener.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Level\LevelSpecifics.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Level\LevelWave.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Level\LevelWaveMusicSettings.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Music\WaveMusicChanger.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Music\WaveMusicChangerListener.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Music\WaveMusicChangerPlaymakerListener.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\PoolBoss\PoolBoss.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\PoolBoss\PoolBossCategory.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\PoolBoss\PoolBossItem.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\PrefabPool\WavePrefabPool.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\PrefabPool\WavePrefabPoolGroup.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\PrefabPool\WavePrefabPoolItem.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\PrefabPool\WavePrefabPoolListener.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\PrefabPool\WavePrefabPoolPlaymakerListener.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Settings\CgkCustomEvent.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Settings\CGKCustomEventToFire.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Settings\CoreCustomEventAttribute.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Settings\CoreScriptOrder.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Settings\CoreWaveClassAttribute.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Settings\ICgkEventReceiver.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Settings\KillerFloat.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Settings\KillerInt.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Settings\KillerVariable.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Spawners\PlayerSpawner.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Spawners\SpawnTracker.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Spawners\TriggeredSpawner.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Spawners\TriggeredSpawnerListener.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Spawners\TriggeredSpawnerPlaymakerListener.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Spawners\VisualizationMarker.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Spawners\WaveSyncroPrefabSpawner.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Spawners\WaveSyncroSpawnerListener.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Spawners\WaveSyncroSpawnerPlaymakerListener.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Utility\CGKPlaymakerUtility.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Utility\KillablePlaymakerListener.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Utility\MechanimStateCoreCustomEvents.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Utility\PlayerPrefs.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Utility\SpawnerUtility.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Utility\SpawnUtility.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Wave\EventDespawnSpecifics.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Wave\TriggeredWaveMetaData.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Wave\TriggeredWaveSpecifics.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\Wave\WaveSpecifics.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\WorldVariables\InGameWorldVariable.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\WorldVariables\WorldVariable.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\WorldVariables\WorldVariableCollection.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\WorldVariables\WorldVariableListener.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\WorldVariables\WorldVariableModifier.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\WorldVariables\WorldVariablePlaymakerListener.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\WorldVariables\WorldVariableRange.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\WorldVariables\WorldVariableRangeCollection.cs" />
+    <Compile Include="Assets\Plugins\DarkTonic\CoreGameKit\Scripts\WorldVariables\WorldVariableTracker.cs" />
+    <Compile Include="Assets\Plugins\Easy Save 2\ES2Init.cs" />
+    <Compile Include="Assets\Plugins\Easy Save 2\Types\ES2_Sprite.cs" />
+    <Compile Include="Assets\Plugins\RelationsInspector\AutoBackendAttributes.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\AddOns\Earth\Materials\EarthShader.shader" />
+    <None Include="Assets\AddOns\Earth\Readme.txt" />
+    <None Include="Assets\AddOns\Easy Save 2\changelog.txt" />
+    <None Include="Assets\AddOns\Easy Save 2\readme.txt" />
+    <None Include="Assets\AddOns\EnergyShields\Resources\EnergyShieldShaderV5_Culling.shader" />
+    <None Include="Assets\AddOns\EnergyShields\Resources\EnergyShieldShaderV5_nonCulling.shader" />
+    <None Include="Assets\AddOns\EnergyShields\Resources\RimShader.shader" />
+    <None Include="Assets\AddOns\Movinarc\PackageUninstaller\README.txt" />
+    <None Include="Assets\AddOns\PlayMaker\Editor\Install\readme.txt" />
+    <None Include="Assets\AddOns\PlayMaker\Readme.txt" />
+    <None Include="Assets\AddOns\PlayMaker\Resources\PlayMakerAssemblies.txt" />
+    <None Include="Assets\AddOns\PlayMaker\Templates\readme.txt" />
+    <None Include="Assets\AddOns\PlayMaker\Versions\readme.txt" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\API Examples\Icosphere FFT\README.txt" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\About\Credits.txt" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\About\changelog.txt" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\About\pc_AboutEntry_ProBuilder.txt" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\DiffuseTextureBlend.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\DiffuseVertexColor.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\UnlitSolidColor.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\pb_FaceHighlight.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\pb_FacePicker.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\pb_HideVertices.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\pb_SelectionPicker.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\pb_StandardVertexColor.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\pb_TransparentOverlay.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\pb_UnlitVertexColor.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\pb_VertexPicker.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\Shader\pb_VertexShader.shader" />
+    <None Include="Assets\AddOns\ProCore\ProBuilder\readme.txt" />
+    <None Include="Assets\AddOns\Rewired\Documentation\ReadMe.txt" />
+    <None Include="Assets\AddOns\Rewired\Documentation\ReleaseNotes.txt" />
+    <None Include="Assets\AddOns\Rewired\Documentation\licences.txt" />
+    <None Include="Assets\AddOns\Rewired\Internal\Libraries\Runtime\Rewired_Core.XML" />
+    <None Include="Assets\AddOns\SpaceD UGUI\Simple Sprite Packer\Changelog.txt" />
+    <None Include="Assets\AddOns\SpaceD UGUI\Simple Sprite Packer\readme.txt" />
+    <None Include="Assets\AddOns\SpaceD UGUI\changelog.txt" />
+    <None Include="Assets\AddOns\WeaponEffects\Sci-Fi Arsenal\Sci-Fi Arsenal - ReadMe.txt" />
+    <None Include="Assets\AddOns\iTween\ReadMe!\ReadMe!.txt" />
+    <None Include="Assets\AddOns\readme.txt" />
+    <None Include="Assets\Plugins\DarkTonic\CoreGameKit\ReleaseNotes.txt" />
+    <None Include="Assets\link.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
+</Project>

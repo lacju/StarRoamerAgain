@@ -1,0 +1,152 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+public class NewGameMenuController : MonoBehaviour {
+
+    private float availableSP;
+    private float pilot;
+    private float charisma;
+    private float engineering;
+    private float tactical;
+    private float mechanic;
+    private float totalSPSpent;
+
+
+
+    private void Start()
+    {
+        pilot = float.Parse(GameObject.Find("PilotSkillLevel").GetComponent<Text>().text);
+        charisma = float.Parse(GameObject.Find("CharismaSkillLevel").GetComponent<Text>().text);
+        engineering = float.Parse(GameObject.Find("EngineeringSkillLevel").GetComponent<Text>().text);
+        tactical = float.Parse(GameObject.Find("TacticalSkillLevel").GetComponent<Text>().text);
+        mechanic = float.Parse(GameObject.Find("MechanicSkillLevel").GetComponent<Text>().text);
+        availableSP = float.Parse(GameObject.Find("AvailSP").GetComponent<Text>().text);
+    }
+
+    private void Update()
+    {
+        totalSPSpent = pilot + charisma + engineering + mechanic + tactical;
+        if (totalSPSpent < 16)
+        {
+            availableSP = 16 - totalSPSpent;
+        }
+
+        //pilot = float.Parse(GameObject.Find("PilotSkillLevel").GetComponent<Text>().text);
+        //charisma = float.Parse(GameObject.Find("CharismaSkillLevel").GetComponent<Text>().text);
+        //engineering = float.Parse(GameObject.Find("EngineeringSkillLevel").GetComponent<Text>().text);
+        //tactical = float.Parse(GameObject.Find("TacticalSkillLevel").GetComponent<Text>().text);
+        //mechanic = float.Parse(GameObject.Find("MechanicSkillLevel").GetComponent<Text>().text);
+        //availableSP = float.Parse(GameObject.Find("AvailSP").GetComponent<Text>().text);
+
+        GameObject.Find("PilotSkillLevel").GetComponent<Text>().text = pilot.ToString();
+        GameObject.Find("CharismaSkillLevel").GetComponent<Text>().text = charisma.ToString();
+        GameObject.Find("EngineeringSkillLevel").GetComponent<Text>().text = engineering.ToString();
+        GameObject.Find("TacticalSkillLevel").GetComponent<Text>().text = tactical.ToString();
+        GameObject.Find("MechanicSkillLevel").GetComponent<Text>().text = mechanic.ToString();
+        GameObject.Find("AvailSP").GetComponent<Text>().text = availableSP.ToString();
+    }
+
+        public void ButtonPilot(float selectedAmt)
+    {
+        if ((selectedAmt > 0) || pilot !=0)
+        {
+            if ((pilot < 10) || selectedAmt < 0)
+            {
+                if (availableSP > 0 || selectedAmt < 0)
+                {
+                    pilot += selectedAmt;
+                    availableSP -= selectedAmt;
+                }
+            }
+        }
+
+
+    }
+
+    public void ButtonCharisma(float selectedAmt)
+    {
+        if ((selectedAmt > 0) || charisma != 0)
+        {
+            if ((charisma < 10) || selectedAmt < 0)
+            {
+                if (availableSP > 0 || selectedAmt < 0)
+                {
+                    charisma += selectedAmt;
+                    availableSP -= selectedAmt;
+                }
+            }
+        }
+    }
+
+    public void ButtonEngineering(float selectedAmt)
+    {
+        if ((selectedAmt > 0) || engineering != 0)
+        {
+            if ((engineering < 10) || selectedAmt < 0)
+            {
+                if (availableSP > 0 || selectedAmt < 0)
+                {
+                    engineering += selectedAmt;
+                    availableSP -= selectedAmt;
+                }
+            }
+        }
+    }
+
+    public void ButtonTactical(float selectedAmt)
+    {
+        if ((selectedAmt > 0) || tactical != 0)
+        {
+            if ((tactical < 10) || selectedAmt < 0)
+            {
+                if (availableSP > 0 || selectedAmt < 0)
+                {
+                    tactical += selectedAmt;
+                    availableSP -= selectedAmt;
+                }
+            }
+        }
+    }
+
+    public void ButtonMechanic(float selectedAmt)
+    {
+        if ((selectedAmt > 0) || mechanic != 0)
+        {
+            if ((mechanic < 10) || selectedAmt < 0)
+            {
+                if (availableSP > 0 || selectedAmt < 0)
+                {
+                    mechanic += selectedAmt;
+                    availableSP -= selectedAmt;
+                }
+            }
+        }
+    }
+
+    public void NameEntered()
+    {
+   //     GameManager.Instance.SetName(GetComponent<InputField>().text);
+    }
+
+    public void StartGame(string scene)
+    {
+        if (!(availableSP > 0))
+        {
+            Debug.Log("loop penetrated");
+            GameManager.Instance.SetCharismaSkill(charisma);
+            GameManager.Instance.SetCredits(100);
+            GameManager.Instance.SetEngineeringSkill(engineering);
+            GameManager.Instance.SetMechanicSkill(mechanic);
+      //      GameManager.Instance.SetName(GetComponent<InputField>().text);
+            GameManager.Instance.SetPilotSkill(pilot);
+            GameManager.Instance.SetTacticalSkill(tactical);
+            Debug.Log("props set");
+            DontDestroyOnLoad(GameManager.Instance);
+            SceneManager.LoadScene(scene);
+            Debug.Log("scene loaded");
+        }
+    }
+}

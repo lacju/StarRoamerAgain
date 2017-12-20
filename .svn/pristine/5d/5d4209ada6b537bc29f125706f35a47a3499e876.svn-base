@@ -1,0 +1,86 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ProjectileController : MonoBehaviour
+{
+    // private int MyProperty { get; set; }
+    private float life;
+    public float damage;
+    private float minDamage;
+    private float maxDamage;
+
+    void Update()
+    {
+  
+    }
+    void Start()
+    {
+        damage = Random.Range(minDamage, maxDamage);
+    }
+
+    void OnEnable()
+    {
+        damage = Random.Range(minDamage, maxDamage);
+    }
+
+    void OnTriggerEnter(Collider target)
+    {
+        target.GetComponent<Collider>().SendMessage("TakeDamage", damage);
+        target.GetComponent<Collider>().SendMessageUpwards("DamageSubystem", (damage / 2));
+        
+        CancelInvoke();
+        gameObject.SetActive(false);
+        Debug.Log("Projectiled collided with" + target);
+
+    }
+
+    void TurnOff()
+    {
+        gameObject.SetActive(false);
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //gameObject.transform.position = BS.transform.position;
+      //  gameObject.transform.rotation = BS.transform.rotation;
+
+    }
+
+    void SetDamage(float dmg)
+    {
+        damage = dmg;
+    }
+
+    void SetLife(float lifeInput)
+    {
+        life = lifeInput;
+    }
+
+    public void SetMinDamage(float minDmg)
+    {
+        minDamage = minDmg;
+    }
+
+    public void SetMaxDamage(float maxDmg)
+    {
+        maxDamage = maxDmg;
+    }
+
+
+    void FixedUpdate()
+    {
+
+        if (gameObject.activeInHierarchy)
+        {
+            Invoke("TurnOff", life);
+
+        }
+    }
+
+    public class Debug
+    {
+        public static void Log(object obj)
+        {
+            UnityEngine.Debug.Log(System.DateTime.Now.ToLongTimeString() + " : " + obj);
+
+        }
+    }
+}

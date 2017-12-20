@@ -1,0 +1,24 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class InventoryWindowHandler : MonoBehaviour {
+
+    public Text playerCredits;
+    public Text cargoWeight;
+
+    private PlayerObjectController _POC;
+
+    private void Awake()
+    {
+        _POC = FindObjectOfType<PlayerObjectController>();
+    }
+
+    private void Update()
+    {
+        playerCredits.text = _POC.GetCurrentCredits().ToString();
+        cargoWeight.text = _POC.GetCurrentCargoWeight().ToString();
+    }
+
+}

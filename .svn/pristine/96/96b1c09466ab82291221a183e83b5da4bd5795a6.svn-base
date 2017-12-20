@@ -1,0 +1,142 @@
+﻿// Converted from UnityScript to C# at http://www.M2H.nl/files/js_to_c.php - by Mike Hergaarden
+// Do test the code! You usually need to change a few small bits.
+
+using UnityEngine;
+using System.Collections;
+
+
+
+public class EquipmentEffect : MonoBehaviour
+{
+    private PlayerObjectController player;
+
+    public enum EquipmentType
+    {
+        shieldGenerator, reactor, armor, repairBot, engine, weapon
+    }
+    public EquipmentType equipType;
+
+    private Shield shieldGen;
+    private Armor armorModule;
+    private Engine engine;
+    private PlayerObjectController pOC;
+
+    //This script allows you to create equipment effects that will be called either OnEquip or WhileEquipped. This is usefull for magic effects and stat handling.
+
+    [AddComponentMenu("Inventory/Items/Equipment Effect")]
+ // [RequireComponent(typeof(Item))] 
+
+private bool effectActive = false;
+
+  
+
+    void Update()
+    {
+        if (effectActive == true)
+        {
+            //-----> THIS IS WHERE YOU INSERT CODE YOU WANT TO EXECUTE AS LONG AS THE ITEM IS EQUIPPED. <-----
+            switch (equipType)
+            {
+                case EquipmentType.armor:
+                    //activate armor script
+                    break;
+                case EquipmentType.engine:
+                    //activate enginer script
+                    break;
+                case EquipmentType.reactor:
+                    //activate reactor script
+                    break;
+                case EquipmentType.repairBot:
+                    //activate repairbot script
+                    break;
+                case EquipmentType.shieldGenerator:
+                    //shieldGen.ShieldsEnabled();
+                    //if (shieldGen.isEquipped)
+                    //{
+
+                    //}
+                    break;
+                case EquipmentType.weapon:
+                    //activate weapon script
+                    break;
+            }
+
+            
+        }
+    }
+
+    public void EquipmentEffectToggle(bool effectIs)
+    {
+        if (effectIs == true)
+        {
+            effectActive = true;
+
+            Debug.Log("Remember to insert code for the EquipmentEffect script you have attached to " + transform.name + ".");
+
+            //-----> THIS IS WHERE YOU INSERT CODE YOU WANT TO EXECUTE JUST WHEN THE ITEM IS EQUIPPED. <-----
+
+            switch (equipType)
+            {
+                case EquipmentType.armor:
+                    armorModule = GetComponent<Armor>();
+                    armorModule.EquipArmor();
+                    break;
+                case EquipmentType.engine:
+                    engine = GetComponent<Engine>();
+                    engine.EquipEngine();
+                    break;
+                case EquipmentType.reactor:
+                    //activate reactor script
+                    break;
+                case EquipmentType.repairBot:
+                    //activate repairbot script
+                    break;
+                case EquipmentType.shieldGenerator:
+                    shieldGen = GetComponent<Shield>();
+                    shieldGen.InitializeShields();
+                    break;
+                case EquipmentType.weapon:
+                    //activate weapon script
+                    break;
+            }
+
+        }
+        else
+        {
+            effectActive = false;
+
+            //-----> THIS IS WHERE YOU INSERT CODE YOU WANT TO EXECUTE JUST WHEN THE ITEM IS UNEQUIPPED. <-----
+
+            switch (equipType)
+            {
+                case EquipmentType.armor:
+                    armorModule.UnequipArmor();
+                    break;
+                case EquipmentType.engine:
+                    engine = GetComponent<Engine>();
+                    engine.UnequipEngine();
+                    break;
+                case EquipmentType.reactor:
+                    //activate reactor script
+                    break;
+                case EquipmentType.repairBot:
+                    //activate repairbot script
+                    break;
+                case EquipmentType.shieldGenerator:
+                    shieldGen.DeactivateShields();
+                    break;
+                case EquipmentType.weapon:
+                    //activate weapon script
+                    break;
+            }
+        }
+    }
+    public class Debug
+    {
+        public static void Log(object obj)
+        {
+            UnityEngine.Debug.Log(System.DateTime.Now.ToLongTimeString() + " : " + obj);
+
+        }
+    } // time stamps debug
+}

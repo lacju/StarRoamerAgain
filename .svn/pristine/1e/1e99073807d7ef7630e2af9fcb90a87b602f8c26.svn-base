@@ -1,0 +1,205 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Inventory : MonoBehaviour {
+
+    public Text[] itemQuantityText = new Text[numItemSlots];
+    public Image[] itemImages = new Image[numItemSlots];
+    public Item[] items = new Item[numItemSlots];
+
+    public const int numItemSlots = 36;
+
+    private int leftoverItems;
+    private int leftoverItemsStackRemoval;
+    private PlayerObjectController _POC;
+
+
+    private void Awake()
+    {
+        _POC = FindObjectOfType<PlayerObjectController>();
+    }
+
+
+    public void AddItem(Item itemToAdd, int quantityToAdd = 0)
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (items[i] != null)
+            {
+                if (itemToAdd.stackable == true)
+                {
+                    if (itemToAdd.itemID == items[i].itemID)
+                    {
+                        if (items[i].maxStackSize > items[i].GetQuantity())
+                        {
+                            if (quantityToAdd <= (items[i].maxStackSize - items[i].GetQuantity()))
+                            {
+                                items[i].AddToStack(quantityToAdd);
+                                itemQuantityText[i].text = items[i].GetQuantity().ToString();
+                                itemQuantityText[i].enabled = true;
+                                _POC.AddToCurrentCargoWeight(items[i].itemWeight * quantityToAdd);
+                                return;
+                            }
+                            else
+                            {
+                                int leftoverItems = quantityToAdd - (items[i].maxStackSize - items[i].GetQuantity());
+                                _POC.AddToCurrentCargoWeight(items[i].itemWeight * (items[i].maxStackSize - items[i].GetQuantity()));
+                                items[i].quantity = items[i].maxStackSize;
+                                itemQuantityText[i].text = items[i].GetQuantity().ToString();
+                                itemQuantityText[i].enabled = true;
+
+                                for (int v = 0; v < items.Length; v++)
+                                {
+                                    if (items[v] == null)
+                                    {
+                                        items[v] = itemToAdd;
+                                        itemImages[v].sprite = itemToAdd.sprite;
+                                        itemImages[v].enabled = true;
+                                        if (leftoverItems <= items[v].maxStackSize)
+                                        {
+                                            if (leftoverItems > 0)
+                                            {
+                                                items[v].AddToStack(leftoverItems);
+                                                itemQuantityText[v].text = leftoverItems.ToString();
+                                                itemQuantityText[v].enabled = true;
+                                                _POC.AddToCurrentCargoWeight(items[i].itemWeight * leftoverItems);
+                                                return;
+                                            }
+                                            else
+                                            {
+                                                items[v].AddToStack(1);
+                                                itemQuantityText[v].text = "1";
+                                                itemQuantityText[v].enabled = true;
+                                                _POC.AddToCurrentCargoWeight(items[i].itemWeight);
+                                                return;
+                                            }
+
+                                        }
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            else if (items[i] == null)
+            {
+                if (itemToAdd.stackable)
+                {
+                    items[i] = itemToAdd;
+                    itemImages[i].sprite = itemToAdd.sprite;
+                    itemImages[i].enabled = true;
+                    if (quantityToAdd <= items[i].maxStackSize)
+                    {
+                        if (quantityToAdd > 0)
+                        {
+                            items[i].AddToStack(quantityToAdd);
+                            itemQuantityText[i].text = quantityToAdd.ToString();
+                            itemQuantityText[i].enabled = true;
+                            _POC.AddToCurrentCargoWeight(items[i].itemWeight * (quantityToAdd));
+                            return;
+                        }
+                        else
+                        {
+                            items[i].AddToStack(1);
+                            itemQuantityText[i].text = "1";
+                            itemQuantityText[i].enabled = true;
+                            _POC.AddToCurrentCargoWeight(items[i].itemWeight);
+                            return;
+                        }
+                    }
+                    if (quantityToAdd > 0 && quantityToAdd > itemToAdd.maxStackSize)
+                    {
+                        int leftoverItems = quantityToAdd - itemToAdd.maxStackSize;
+
+                        items[i].AddToStack(items[i].maxStackSize);
+                        itemQuantityText[i].text = items[i].maxStackSize.ToString();
+                        itemQuantityText[i].enabled = true;
+                        AddItem(itemToAdd, leftoverItems);
+                        _POC.AddToCurrentCargoWeight(items[i].itemWeight * (quantityToAdd - itemToAdd.maxStackSize));
+                        return;
+
+                    }
+                }
+                    items[i] = itemToAdd;
+                    itemImages[i].sprite = itemToAdd.sprite;
+                    itemImages[i].enabled = true;
+                    _POC.AddToCurrentCargoWeight(items[i].itemWeight);
+                    return;
+                
+                
+            }
+
+
+
+        }
+    }
+
+
+
+    public void RemoveItem(Item itemToRemove)
+    {
+        for (int i = 0; i<items.Length; i++)
+        {
+            if (items[i] == itemToRemove)
+            {
+                items[i] = null;
+                itemImages[i].sprite = null;
+                itemImages[i].enabled = false;
+                return;
+            }
+        }
+    }
+
+    public void RemoveStackableItem(Item itemToRemove, int quantityToRemove)
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (items[i] == itemToRemove)
+            {
+                if (items[i].quantity > quantityToRemove)
+                {
+                    items[i].quantity -= quantityToRemove;
+                    return;
+                }
+                if (items[i].quantity == quantityToRemove)
+                {
+                    items[i] = null;
+                    itemImages[i].sprite = null;
+                    itemImages[i].enabled = false;
+                    itemQuantityText[i].enabled = false;
+                    return;
+                }
+                else
+                {
+                    leftoverItemsStackRemoval = quantityToRemove - items[i].quantity;
+                    items[i] = null;
+                    itemImages[i].sprite = null;
+                    itemImages[i].enabled = false;
+                    itemQuantityText[i].enabled = false;
+                    RemoveStackableItem(itemToRemove, leftoverItemsStackRemoval);
+                }
+
+            }
+        }
+    }
+
+    public int GetNumItems()
+    {
+        return numItemSlots;
+    }
+
+    public class Debug
+    {
+        public static void Log(object obj)
+        {
+            UnityEngine.Debug.Log(System.DateTime.Now.ToLongTimeString() + " : " + obj);
+
+        }
+    } // time stamps debug 
+}

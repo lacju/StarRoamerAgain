@@ -1,0 +1,94 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Rewired;
+
+public class HandleItemOnButtonClick : MonoBehaviour
+{
+
+    private Item handledItem;
+    private Inventory playerInv;
+    private Item[] playerInvContents;
+    private PlayerEquipmentHandler playerEquipment;
+    private PlayerObjectController _POC;
+    private VendorHandler _vendor;
+    public int rewiredPlayerId = 0;
+    private Player rewiredPlayer;
+
+    private void Awake()
+    {
+
+        playerInv = FindObjectOfType<Inventory>();
+        // playerEquipment = FindObjectOfType<PlayerEquipmentHandler>();
+
+        _POC = FindObjectOfType<PlayerObjectController>();
+        rewiredPlayer = ReInput.players.GetPlayer(rewiredPlayerId);
+
+    }
+
+    private void Update()
+    {
+
+    }
+
+    public void ItemClicked(int invSlotNum)
+    {
+        playerEquipment = FindObjectOfType<PlayerEquipmentHandler>();
+        handledItem = playerInv.items[invSlotNum];
+        _vendor = FindObjectOfType<VendorHandler>();
+        Debug.Log(_vendor);
+        if (_vendor != null)
+        {
+            if (handledItem.stackable)
+            {
+                if (rewiredPlayer.GetButton("ShiftModifier")) //Hold shift and click to sell the whole inventory slots worth of items
+                {
+
+                    _POC.AddToCurrentCredits(playerInv.items[invSlotNum].quantity * (playerInv.items[invSlotNum].baseCostCredits * (_vendor.GetPriceModifier() + 1)));
+                    playerInv.RemoveStackableItem(playerInv.items[invSlotNum], playerInv.items[invSlotNum].quantity);
+                }
+                else
+                {
+
+                    _POC.AddToCurrentCredits(playerInv.items[invSlotNum].quantity * (playerInv.items[invSlotNum].baseCostCredits * (_vendor.GetPriceModifier() + 1)));
+                    playerInv.RemoveStackableItem(playerInv.items[invSlotNum], 1);
+                }
+            }
+        }
+
+        else if (handledItem.isEquipment)
+        {
+            playerInv.RemoveItem(handledItem);
+            string itemType = handledItem.itemType;
+
+            switch (itemType)
+            {
+                case "Engine":
+                    Engine engine = (Engine)handledItem;
+                    playerEquipment.EquipItem(engine);
+                    break;
+                case "Reactor":
+                    Reactor reactor = (Reactor)handledItem;
+                    Debug.Log(reactor);
+                    Debug.Log(playerEquipment);
+                    playerEquipment.EquipItem(reactor);
+                    break;
+                case "Weapon":
+                    Weapon weapon = (Weapon)handledItem;
+                    playerEquipment.EquipItem(weapon);
+                    break;
+                case "Shield":
+                    Shield shield = (Shield)handledItem;
+                    playerEquipment.EquipItem(shield);
+                    break;
+                case "Armor":
+                    Armor armor = (Armor)handledItem;
+                    playerEquipment.EquipItem(armor);
+                    break;
+            }
+        }
+    }
+
+
+}
+

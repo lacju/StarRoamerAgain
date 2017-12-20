@@ -1,0 +1,56 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class Mover : MonoBehaviour {
+
+    public float speed;
+    public float life;
+    public float damage;
+
+    private GameObject BS;
+    private Vector3 shipSpeed;
+    
+    void Update()
+    {
+       // if (gameObject.activeInHierarchy)
+       // {
+       //     Invoke("TurnOff", life);
+       // }
+    } 
+    void  Start()
+    {
+        //GetComponent<Rigidbody>().velocity = transform.forward * speed;
+        BS = GameObject.FindGameObjectWithTag("Enemy");
+    }
+
+    void OnTriggerEnter(Collider target)
+    {
+        target.SendMessage("UpdateHitPoints", damage);
+        CancelInvoke();
+        gameObject.SetActive(false);
+
+    }
+
+    void TurnOff()
+    {
+        gameObject.SetActive(false);
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        gameObject.transform.position = BS.transform.position;
+        gameObject.transform.rotation = BS.transform.rotation;
+
+    }
+
+
+     void FixedUpdate()
+     {
+
+        if (gameObject.activeInHierarchy)
+         {
+             Invoke("TurnOff", life);
+            
+        }
+     }
+}
+
+
+

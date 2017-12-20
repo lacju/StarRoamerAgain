@@ -1,0 +1,48 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Reactor : MonoBehaviour {
+
+    [Tooltip("Maximum power")]
+    public float maxPower;
+    [Tooltip("Recharge Rate")]
+    public float rechargeRate;
+
+    private bool isEquipped = false;
+    private PlayerObjectController _POC;
+
+
+
+
+
+
+    public void Regenerate()
+    {
+        if (_POC.GetAvailEnergy() < _POC.GetMaxEnergy())
+        {
+            if (_POC.GetAvailEnergy() < 0)
+            {
+                _POC.SetAvailEnergy(0);
+            }
+             if (_POC.GetAvailEnergy() < _POC.GetMaxEnergy())
+            {
+                if ((_POC.GetMaxEnergy() - _POC.GetCurrentShieldPoints()) < RechargeRate())
+                {
+                    _POC.SetAvailEnergy(_POC.GetMaxEnergy());
+                }
+                else
+                {
+                    _POC.AddToCurrentShields(RechargeRate());
+                }
+            }
+        }
+    }
+
+    public float RechargeRate()
+    {
+        return rechargeRate;
+    }
+
+}
